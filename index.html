@@ -19,6 +19,79 @@
 		<link rel="stylesheet" href="assets/css/aos.css" />
 		<link rel="stylesheet" href="assets/css/default.css" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			.transparent-header .tg-header__area {
+				background: #ffffff;
+			}
+
+			.banner-video-area {
+				position: relative;
+				display: flex;
+				align-items: center;
+				min-height: 870px;
+				padding: 200px 0 100px;
+				overflow: hidden;
+				background: #0b16241a;
+			}
+
+			.banner-video-area .banner-video-wrap,
+			.banner-video-area .banner-video-overlay {
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 92px;
+			}
+
+			.banner-video-area .banner-video-wrap video {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			.banner-video-area .banner-video-overlay {
+				background: rgba(255, 255, 255, 0.113);
+			}
+
+			.banner-video-area .container {
+				position: relative;
+				z-index: 1;
+			}
+
+			@media (max-width: 1500px) {
+				.banner-video-area {
+					min-height: 680px;
+				}
+			}
+
+			@media (max-width: 767.98px) {
+				.banner-video-area {
+					min-height: 640px;
+					padding: 170px 0 80px;
+				}
+
+				.banner-video-area .banner-video-wrap,
+				.banner-video-area .banner-video-overlay {
+					top: 78px;
+				}
+			}
+
+			.notice-area {
+				padding: 18px 0 0;
+				background: #17306f;
+			}
+
+			.notice-banner-image,
+			.notice-banner-image img {
+				display: block;
+				width: 100%;
+			}
+
+			.notice-banner-image img {
+				height: auto;
+				border-radius: 18px;
+			}
+		</style>
 	</head>
 	<body>
 		<!--Preloader-->
@@ -37,24 +110,7 @@
 		<!-- Scroll-top-end-->
 		<!-- header-area -->
 		<header class="transparent-header">
-			<div class="tg-header__top">
-				<div class="container custom-container">
-					<div class="row">
-						<div class="col-lg-6">
-							<ul class="tg-header__top-info left-side list-wrap">
-								<li><i class="flaticon-phone-call"></i><a href="tel:0123456789">+123 9898 500</a></li>
-								<li><i class="flaticon-pin"></i>256 Avenue, Mark Street, NewYork City</li>
-							</ul>
-						</div>
-						<div class="col-lg-6">
-							<ul class="tg-header__top-right list-wrap">
-								<li><i class="flaticon-envelope"></i><a href="mailto:info@apexa.com">info@apexa.com</a></li>
-								<li><i class="flaticon-time"></i>Mon-Fri: 10:00am - 09:00pm</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
+
 			<div id="sticky-header" class="tg-header__area">
 				<div class="container custom-container">
 					<div class="row">
@@ -67,7 +123,7 @@
 									<div class="tgmenu__navbar-wrap tgmenu__main-menu d-none d-lg-flex">
 										<ul class="navigation">
 											<li class="active menu-item-has-children">
-												<a href="#">Home</a>
+												<a href="#">Início</a>
 												<ul class="sub-menu">
 													<li class="active"><a href="index.html">01. Business</a></li>
 													<li><a href="index-2.html">02. Finance</a></li>
@@ -84,7 +140,7 @@
 												</ul>
 											</li>
 											<li class="menu-item-has-children">
-												<a href="#">About Us</a>
+												<a href="#">Sites Municipais</a>
 												<ul class="sub-menu">
 													<li>
 														<a href="about.html">Business About</a>
@@ -112,7 +168,7 @@
 												</ul>
 											</li>
 											<li class="menu-item-has-children">
-												<a href="#">Services</a>
+												<a href="#">Portal Transparência</a>
 												<ul class="sub-menu">
 													<li><a href="services.html">Business Service</a></li>
 													<li><a href="services-2.html">Finance Service</a></li>
@@ -127,7 +183,7 @@
 												</ul>
 											</li>
 											<li class="menu-item-has-children">
-												<a href="#">Pages</a>
+												<a href="#">Serviços</a>
 												<ul class="sub-menu">
 													<li><a href="team.html">Team One</a></li>
 													<li><a href="team-2.html">Team Two</a></li>
@@ -142,13 +198,13 @@
 												</ul>
 											</li>
 											<li class="menu-item-has-children">
-												<a href="#">Blog</a>
+												<a href="#">Notícias</a>
 												<ul class="sub-menu">
 													<li><a href="blog.html">Our Blog</a></li>
 													<li><a href="blog-details.html">Blog Details</a></li>
 												</ul>
 											</li>
-											<li><a href="contact.html">contacts</a></li>
+											<li><a href="contact.html">Fale Conosco</a></li>
 										</ul>
 									</div>
 									<div class="tgmenu__action d-none d-md-block">
@@ -320,15 +376,21 @@
 		<!-- main-area -->
 		<main class="fix">
 			<!-- banner-area -->
-			<section class="banner-area banner-bg" data-background="assets/img/banner/banner_bg.jpg">
+			<section class="banner-area banner-video-area">
+				<div class="banner-video-wrap">
+					<video autoplay muted loop playsinline>
+						<source src="video/street.mp4" type="video/mp4" />
+					</video>
+				</div>
+				<div class="banner-video-overlay"></div>
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="banner-content">
-								<span class="sub-title" data-aos="fade-up" data-aos-delay="0">We Are Expert In This Field</span>
-								<h2 class="title" data-aos="fade-up" data-aos-delay="200">business Consulting All Solutions</h2>
-								<p data-aos="fade-up" data-aos-delay="400">Apexa helps you to convert your data into a strategic asset and get business insights Apexa helps you to convert your data into asset and get top-notch business insights.</p>
-								<a href="about.html" class="btn" data-aos="fade-up" data-aos-delay="600">Read More</a>
+								<span class="sub-title" data-aos="fade-up" data-aos-delay="0" style="color: #ffaa00; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);">Processos públicos com igualdade e transparência.</span>
+								<h2 class="title" data-aos="fade-up" data-aos-delay="200" style="color: #fff; text-shadow: 0 3px 12px rgba(0, 0, 0, 0.35);">Seu Portal Transparencia</h2>
+								<p data-aos="fade-up" data-aos-delay="400" style="color: #fff; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">Compromisso com a ética e a responsabilidade pública.</p>
+								<a href="about.html" class="btn" data-aos="fade-up" data-aos-delay="600">Ler Mais</a>
 							</div>
 							<div class="banner-shape">
 								<img src="assets/img/banner/banner_shape01.png" alt="Apexa" class="rightToLeft" />
@@ -336,26 +398,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="banner-social">
-						<h5 class="title">Follow us</h5>
-						<ul class="list-wrap">
-							<li>
-								<a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
-							</li>
-							<li>
-								<a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
-							</li>
-							<li>
-								<a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-							</li>
-							<li>
-								<a href="javascript:void(0)"><i class="fab fa-pinterest-p"></i></a>
-							</li>
-							<li>
-								<a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a>
-							</li>
-						</ul>
-					</div>
+					
 					<div class="banner-scroll">
 						<a href="#about"
 							>Scroll Down <span><i class="fas fa-arrow-right"></i></span
@@ -365,47 +408,11 @@
 			</section>
 			<!-- banner-area-end -->
 			<!-- brand-area -->
-			<div class="brand-area">
+			<div class="notice-area">
 				<div class="container">
-					<div class="swiper-container brand-active">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<div class="brand-item">
-									<img src="assets/img/brand/brand_img01.png" alt="Apexa" />
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="brand-item">
-									<img src="assets/img/brand/brand_img02.png" alt="Apexa" />
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="brand-item">
-									<img src="assets/img/brand/brand_img03.png" alt="Apexa" />
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="brand-item">
-									<img src="assets/img/brand/brand_img04.png" alt="Apexa" />
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="brand-item">
-									<img src="assets/img/brand/brand_img05.png" alt="Apexa" />
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="brand-item">
-									<img src="assets/img/brand/brand_img06.png" alt="Apexa" />
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="brand-item">
-									<img src="assets/img/brand/brand_img03.png" alt="Apexa" />
-								</div>
-							</div>
-						</div>
-					</div>
+					<a href="#" class="notice-banner-image">
+						<img src="assets/img/images/BANNER.png" alt="Banner informativo" />
+					</a>
 				</div>
 			</div>
 			<!-- brand-area -->
