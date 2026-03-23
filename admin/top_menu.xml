@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu>
+  <menuitem label="Configurações">
+    <icon>fas:cogs fa-fw </icon>
+    <menu>
+      <menuitem label="Gerar Dados">
+        <icon>fas:database fa-fw </icon>
+        <action>GenerateDataControl#method=onShow</action>
+      </menuitem>
+    </menu>
+  </menuitem>
+</menu>

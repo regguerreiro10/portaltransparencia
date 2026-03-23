@@ -179,6 +179,32 @@
         },
     });
 
+    if ($(".services__quick-slider").length) {
+        new Swiper(".services__quick-slider", {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            speed: 700,
+            watchOverflow: true,
+            navigation: {
+                nextEl: ".services__arrow-next",
+            },
+            breakpoints: {
+                1200: {
+                    slidesPerView: 4,
+                },
+                992: {
+                    slidesPerView: 3,
+                },
+                576: {
+                    slidesPerView: 2,
+                },
+                0: {
+                    slidesPerView: 1,
+                },
+            },
+        });
+    }
+
     /*=============================================
 	=          testimonials active              =
 =============================================*/

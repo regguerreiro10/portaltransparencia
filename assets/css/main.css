@@ -4947,9 +4947,58 @@ textarea {
   position: relative;
   z-index: 1;
 }
+.services__slider-wrap {
+  position: relative;
+  padding-right: 88px;
+}
+.services__quick-slider {
+  overflow: hidden;
+}
+.services__quick-slider .swiper-slide {
+  height: auto;
+}
+.services__quick-slider .services__item-two {
+  height: calc(100% - 30px);
+}
+.services__arrow {
+  width: 54px;
+  height: 54px;
+  border: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  color: #282b7c;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+.services__arrow:hover {
+  background: #282b7c;
+  color: #ffffff;
+}
+.services__arrow.swiper-button-disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
 @media (max-width: 767.98px) {
   .services__area-two {
     padding: 100px 0 70px;
+  }
+  .services__slider-wrap {
+    padding-right: 0;
+    padding-bottom: 76px;
+  }
+  .services__arrow {
+    top: auto;
+    right: 50%;
+    bottom: 0;
+    transform: translateX(50%);
   }
 }
 .services-item-wrap .row {
@@ -12241,6 +12290,82 @@ blockquote p {
 }
 .contact__form-wrap p {
   margin-bottom: 15px;
+}
+.ouvidoria-card {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #c7dde0 0%, #d9ecef 100%);
+  min-height: 345px;
+}
+.ouvidoria-card__image {
+  width: 48%;
+  min-height: 345px;
+  flex: 0 0 48%;
+}
+.ouvidoria-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ouvidoria-card__content {
+  width: 52%;
+  flex: 0 0 52%;
+  padding: 50px 34px 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contact__form-wrap .ouvidoria-card__content .title {
+  margin-bottom: 18px;
+  font-size: 24px;
+  line-height: 1.25;
+  color: #1d2f5f;
+}
+.contact__form-wrap .ouvidoria-card__content p {
+  margin-bottom: 26px;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #1c1c1c;
+}
+.ouvidoria-card__link {
+  font-size: 17px;
+  font-weight: 700;
+  color: #e4aa00;
+}
+.ouvidoria-card__link:hover {
+  color: #c79200;
+}
+@media (max-width: 991.98px) {
+  .ouvidoria-card {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .ouvidoria-card__image,
+  .ouvidoria-card__content {
+    width: 100%;
+    flex: 0 0 100%;
+  }
+  .ouvidoria-card__image {
+    min-height: 280px;
+  }
+  .ouvidoria-card__content {
+    padding: 30px 24px 32px;
+  }
+}
+@media (max-width: 575.98px) {
+  .ouvidoria-card__image {
+    min-height: 220px;
+  }
+  .contact__form-wrap .ouvidoria-card__content .title {
+    font-size: 22px;
+  }
+  .contact__form-wrap .ouvidoria-card__content p {
+    font-size: 15px;
+  }
 }
 .contact__form-wrap form .row {
   --bs-gutter-x: 10px;

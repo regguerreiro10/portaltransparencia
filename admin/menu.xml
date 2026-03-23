@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+  <menuitem label="Pessoas">
+    <icon>fas:users fa-fw</icon>
+    <menu>
+      <menuitem label="Pessoas">
+        <action>PessoaList#method=onShow</action>
+        <icon>fas:chevron-right fa-fw</icon>
+      </menuitem>
+      <menuitem label="Configurações">
+        <icon>fas:cogs fa-fw</icon>
+        <menu>
+          <menuitem label="Categoria clientes">
+            <action>CategoriaClienteHeaderList#method=onShow</action>
+            <icon>fas:chevron-right fa-fw</icon>
+          </menuitem>
+          <menuitem label="Cidades">
+            <action>CidadeHeaderList#method=onShow</action>
+            <icon>fas:chevron-right fa-fw</icon>
+          </menuitem>
+          <menuitem label="Estados">
+            <action>EstadoHeaderList#method=onShow</action>
+            <icon>fas:chevron-right fa-fw</icon>
+          </menuitem>
+          <menuitem label="Grupo pessoas">
+            <action>GrupoPessoaHeaderList#method=onShow</action>
+            <icon>fas:chevron-right fa-fw</icon>
+          </menuitem>
+          <menuitem label="Tipo clientes">
+            <action>TipoClienteHeaderList#method=onShow</action>
+            <icon>fas:chevron-right fa-fw</icon>
+          </menuitem>
+        </menu>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="Financeiro">
+    <icon>fas:money-bill-alt fa-fw</icon>
+    <menu>
+      <menuitem label="Contas a receber">
+        <action>ContaReceberList#method=onShow</action>
+        <icon>fas:chevron-right fa-fw</icon>
+      </menuitem>
+      <menuitem label="Contas a pagar">
+        <action>ContaPagarList#method=onShow</action>
+        <icon>fas:chevron-right fa-fw</icon>
+      </menuitem>
+      <menuitem label="Relatório de contas">
+        <action>ContaReport#method=onShow</action>
+        <icon>fas:chevron-right fa-fw</icon>
+      </menuitem>
+      <menuitem label="Dashboard">
+        <action>DashboardFinanceiro#method=onShow</action>
+        <icon>fas:tachometer-alt fa-fw</icon>
+      </menuitem>
+      <menuitem label="Configurações">
+        <icon>fas:cogs fa-fw</icon>
+        <menu>
+          <menuitem label="Tipo contas">
+            <action>TipoContaHeaderList#method=onShow</action>
+            <icon>far:circle fa-fw</icon>
+          </menuitem>
+          <menuitem label="Formas de pagamento">
+            <action>FormaPagamentoHeaderList#method=onShow</action>
+            <icon>far:circle fa-fw</icon>
+          </menuitem>
+          <menuitem label="Categorias">
+            <action>CategoriaHeaderList#method=onShow</action>
+            <icon>far:circle fa-fw</icon>
+          </menuitem>
+          <menuitem label="Tipos de anexo">
+            <action>TipoAnexoHeaderList#method=onShow</action>
+            <icon>far:circle fa-fw</icon>
+          </menuitem>
+        </menu>
+      </menuitem>
+      <menuitem label="Relatório caixa">
+        <action>ContaCaixaReport#method=onShow</action>
+        <icon>fas:cash-register fa-fw</icon>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="_t{Administration}">
+    <icon>fas:home fa-fw</icon>
+    <menu>
+      <menuitem label="Dashboard">
+        <action>SystemAdministrationDashboard</action>
+        <icon>fas:tachometer-alt fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{Programs}">
+        <action>SystemProgramList</action>
+        <icon>far:file-code fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{Groups}">
+        <action>SystemGroupList</action>
+        <icon>fas:users fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{Units}">
+        <action>SystemUnitList</action>
+        <icon>fas:university fa-fw</icon>
+      </menuitem>
+      <menuitem label="Entidades">
+        <action>SystemEntidadeList</action>
+        <icon>fas:building fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{Users}">
+        <action>SystemUserList</action>
+        <icon>fas:user fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{User monitoring}">
+        <action>SystemUserMonitorHeaderList</action>
+        <icon>fas:binoculars fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{Data importing}">
+        <action>SystemDataImportForm#method=onShow</action>
+        <icon>fas:cloud-upload-alt fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{Database explorer}">
+        <action>SystemDatabaseExplorer</action>
+        <icon>fas:database fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{SQL Panel}">
+        <action>SystemSQLPanel</action>
+        <icon>fas:table fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{Menu editor}">
+        <action>SystemMenuEditor</action>
+        <icon>far:edit fa-fw</icon>
+      </menuitem>
+      <menuitem label="PHP Info">
+        <action>SystemPHPInfoView</action>
+        <icon>fas:info-circle fa-fw</icon>
+      </menuitem>
+      <menuitem label="System Information">
+        <action>SystemInformationView</action>
+        <icon>fas:desktop fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{Preferences}">
+        <action>SystemPreferenceForm#method=onEdit</action>
+        <icon>fas:cog fa-fw</icon>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="_t{Documents}">
+    <icon>far:file-alt fa-fw</icon>
+    <menu>
+      <menuitem label="_t{Send document}">
+        <action>SystemDocumentUploadForm</action>
+        <icon>fas:cloud-upload-alt fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{My documents}">
+        <action>SystemDocumentList</action>
+        <icon>fas:archive fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{Shared with me}">
+        <action>SystemSharedDocumentList</action>
+        <icon>fas:share-alt fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{Categories}">
+        <action>SystemDocumentCategoryFormList</action>
+        <icon>fas:th fa-fw</icon>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="Logs">
+    <icon>fas:desktop fa-fw</icon>
+    <menu>
+      <menuitem label="Dashboard">
+        <action>SystemLogDashboard</action>
+        <icon>fas:tachometer-alt fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{Access Log}">
+        <action>SystemAccessLogList</action>
+        <icon>fas:key fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{Change Log}">
+        <action>SystemChangeLogView</action>
+        <icon>fas:film fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{SQL Log}">
+        <action>SystemSqlLogList</action>
+        <icon>fas:database fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{Request Log}">
+        <action>SystemRequestLogList</action>
+        <icon>fas:globe fa-fw</icon>
+      </menuitem>
+      <menuitem label="_t{PHP Log}">
+        <action>SystemPHPErrorLogView</action>
+        <icon>fas:exclamation-triangle fa-fw</icon>
+      </menuitem>
+      <menuitem label="Session dump">
+        <action>SystemSessionDumpView</action>
+        <icon>fas:code fa-fw</icon>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="Logout">
+    <action>LoginForm#method=onLogout#static=1</action>
+    <icon>fas:sign-out-alt fa-fw</icon>
+  </menuitem>
+</menu>
