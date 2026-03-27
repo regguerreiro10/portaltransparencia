@@ -19,6 +19,264 @@
 		<link rel="stylesheet" href="assets/css/aos.css" />
 		<link rel="stylesheet" href="assets/css/default.css" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<style>
+			.receitas-area {
+				padding: 0 0 120px;
+			}
+
+			.receitas-layout {
+				display: grid;
+				grid-template-columns: minmax(0, 1fr) 240px;
+				gap: 28px;
+				align-items: start;
+			}
+
+			.receitas-panel,
+			.receitas-side-card {
+				background: #ffffff;
+				border: 1px solid rgba(15, 23, 42, 0.08);
+				border-radius: 18px;
+				box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+			}
+
+			.receitas-panel {
+				overflow: hidden;
+			}
+
+			.receitas-panel__header {
+				display: flex;
+				justify-content: space-between;
+				align-items: end;
+				gap: 20px;
+				padding: 32px 32px 22px;
+				border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+			}
+
+			.receitas-panel__header h2 {
+				margin: 0 0 12px;
+				font-size: 42px;
+				color: #17324d;
+			}
+
+			.receitas-period {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				font-size: 18px;
+				color: #26415d;
+			}
+
+			.receitas-period select {
+				border: 1px solid #cbd5e1;
+				border-radius: 8px;
+				padding: 6px 10px;
+				background: #fff;
+				color: #17324d;
+			}
+
+			.receitas-total {
+				font-size: 22px;
+				color: #17324d;
+				white-space: nowrap;
+			}
+
+			.receitas-total strong {
+				color: #0f172a;
+			}
+
+			.receitas-chart {
+				max-height: 430px;
+				overflow-y: auto;
+				padding: 26px 32px 10px;
+			}
+
+			.receitas-loading,
+			.receitas-empty {
+				padding: 40px 8px;
+				text-align: center;
+				color: #51657d;
+			}
+
+			.receitas-row {
+				display: grid;
+				grid-template-columns: 180px minmax(0, 1fr) 150px;
+				align-items: center;
+				gap: 14px;
+				margin-bottom: 14px;
+			}
+
+			.receitas-label {
+				font-size: 14px;
+				text-transform: uppercase;
+				color: #49627d;
+				word-break: break-word;
+			}
+
+			.receitas-bar-track {
+				height: 24px;
+				background: #edf4fb;
+				border: 1px solid #d5e5f5;
+				border-radius: 999px;
+				overflow: hidden;
+			}
+
+			.receitas-bar-fill {
+				height: 100%;
+				border-radius: inherit;
+				background: linear-gradient(90deg, #84bce7 0%, #acd7f6 100%);
+			}
+
+			.receitas-value {
+				font-weight: 600;
+				font-size: 15px;
+				text-align: right;
+				color: #17324d;
+			}
+
+			.receitas-footer {
+				padding: 22px 32px 28px;
+				border-top: 1px solid rgba(15, 23, 42, 0.1);
+				color: #17324d;
+			}
+
+			.receitas-footer a {
+				color: #0d6efd;
+			}
+
+			.receitas-side {
+				display: grid;
+				gap: 20px;
+			}
+
+			.receitas-side-card {
+				padding: 26px 24px;
+				text-align: center;
+			}
+
+			.receitas-side-card h3 {
+				margin: 0 0 16px;
+				font-size: 22px;
+				line-height: 1.25;
+				color: #17324d;
+			}
+
+			.receitas-side-card p {
+				margin: 0 0 20px;
+				font-size: 15px;
+				line-height: 1.6;
+				color: #48627d;
+				text-transform: uppercase;
+			}
+
+			.receitas-side-card .btn {
+				min-width: 110px;
+				justify-content: center;
+			}
+
+			.transparency-links-area {
+				padding: 10px 0 120px;
+			}
+
+			.transparency-links-grid {
+				display: grid;
+				grid-template-columns: repeat(4, minmax(0, 1fr));
+				gap: 26px 18px;
+			}
+
+			.transparency-link-card {
+				display: block;
+				color: inherit;
+			}
+
+			.transparency-link-card:hover {
+				color: inherit;
+			}
+
+			.transparency-link-card__thumb {
+				min-height: 132px;
+				padding: 22px 16px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				border-radius: 0;
+				background: linear-gradient(135deg, #244d8f 0%, #2837c7 100%);
+				box-shadow: 0 18px 35px rgba(27, 52, 111, 0.18);
+			}
+
+			.transparency-link-card__thumb span {
+				font-size: 15px;
+				line-height: 1.35;
+				font-weight: 700;
+				letter-spacing: 0.02em;
+				text-transform: uppercase;
+				color: #fff;
+			}
+
+			.transparency-link-card__meta {
+				margin-top: 8px;
+				font-size: 11px;
+				line-height: 1.2;
+				text-transform: uppercase;
+				color: #0d4ea6;
+			}
+
+			.transparency-link-card__title {
+				margin-top: 6px;
+				font-size: 16px;
+				line-height: 1.35;
+				color: #5e6f82;
+			}
+
+			@media (max-width: 991.98px) {
+				.receitas-area {
+					padding-bottom: 90px;
+				}
+
+				.receitas-layout {
+					grid-template-columns: 1fr;
+				}
+
+				.receitas-panel__header {
+					flex-direction: column;
+					align-items: flex-start;
+				}
+
+				.transparency-links-grid {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+			}
+
+			@media (max-width: 767.98px) {
+				.receitas-panel__header,
+				.receitas-chart,
+				.receitas-footer {
+					padding-left: 20px;
+					padding-right: 20px;
+				}
+
+				.receitas-panel__header h2 {
+					font-size: 34px;
+				}
+
+				.receitas-row {
+					grid-template-columns: 1fr;
+					gap: 8px;
+				}
+
+				.receitas-value {
+					text-align: left;
+				}
+
+				.transparency-links-area {
+					padding-bottom: 90px;
+				}
+
+				.transparency-links-grid {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
 	</head>
 	<body>
 		<!--Preloader-->
@@ -282,15 +540,120 @@
 							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
 								<div class="services-item shine-animate-item">
 									<div class="services-thumb">
-										<a href="services-details.html" class="shine-animate"><img src="assets/img/services/foto-1.png" alt="Apexa" /></a>
+										<a href="orcamento.html" class="shine-animate"><img src="assets/img/services/foto-1.png" alt="Apexa" /></a>
 									</div>
 									<div class="services-content">
 										<div class="icon">
 											<i class="flaticon-profit"></i>
 										</div>
-										<h4 class="title"><a href="service-details.html">Orçamento</a></h4>
-										<p>Morem ipsum dolor sittemet consectetur adipiscing.</p>
-										<a href="services-details.html" class="btn">Read More</a>
+										<h4 class="title"><a href="orcamento.html">Orçamento</a></h4>
+										<p>planejamento e orçamento público</p>
+                                        <a href="orcamento.html" class="btn">Ver mais</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+								<div class="services-item shine-animate-item">
+									<div class="services-thumb">
+                                        <a href="licitacoes-portal.html" class="shine-animate"><img src="assets/img/services/foto-2.png" alt="Apexa" /></a>
+									</div>
+									<div class="services-content">
+										<div class="icon">
+											<i class="flaticon-investment-1"></i>
+										</div>
+                                        <h4 class="title"><a href="licitacoes-portal.html">Licitações</a></h4>
+										<p>divulgar e acompanhar os processos de licitação</p>
+                                        <a href="licitacoes-portal.html" class="btn">Ver mais</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+								<div class="services-item shine-animate-item">
+									<div class="services-thumb">
+										<a href="obras-portal.html" class="shine-animate"><img src="assets/img/services/foto-3.png" alt="Apexa" /></a>
+									</div>
+									<div class="services-content">
+										<div class="icon">
+											<i class="flaticon-pie-chart"></i>
+										</div>
+										<h4 class="title"><a href="obras-portal.html">Obras</a></h4>
+										<p>divulgar e acompanhar obras públicas</p>
+										<a href="obras-portal.html" class="btn">Ver mais</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+								<div class="services-item shine-animate-item">
+									<div class="services-thumb">
+                                        <a href="gestao-pessoas-portal.html" class="shine-animate"><img src="assets/img/services/foto-4.png" alt="Apexa" /></a>
+									</div>
+									<div class="services-content">
+										<div class="icon">
+											<i class="flaticon-light-bulb"></i>
+										</div>
+                                        <h4 class="title"><a href="gestao-pessoas-portal.html">Gestão de pessoas</a></h4>
+										<p>disponibilizar informações sobre servidores</p>
+                                        <a href="gestao-pessoas-portal.html" class="btn">Ver mais</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+								<div class="services-item shine-animate-item">
+									<div class="services-thumb">
+                                        <a href="contratos-portal.html" class="shine-animate"><img src="assets/img/services/foto-5.png" alt="Apexa" /></a>
+									</div>
+									<div class="services-content">
+										<div class="icon">
+											<i class="flaticon-investment"></i>
+										</div>
+                                        <h4 class="title"><a href="contratos-portal.html">Contratos</a></h4>
+										<p>acompanhar contratos administrativos</p>
+                                        <a href="contratos-portal.html" class="btn">Ver mais</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+								<div class="services-item shine-animate-item">
+									<div class="services-thumb">
+                                        <a href="lgpd-portal.html" class="shine-animate"><img src="assets/img/services/foto-6.png" alt="Apexa" /></a>
+									</div>
+									<div class="services-content">
+										<div class="icon">
+											<i class="flaticon-piggy-bank"></i>
+										</div>
+                                        <h4 class="title"><a href="lgpd-portal.html">LGPD</a></h4>
+										<p>garantir a proteção de dados pessoais</p>
+                                        <a href="lgpd-portal.html" class="btn">Ver mais</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+								<div class="services-item shine-animate-item">
+									<div class="services-thumb">
+                                        <a href="convenios-portal.html" class="shine-animate"><img src="assets/img/services/foto-7.png" alt="Apexa" /></a>
+									</div>
+									<div class="services-content">
+										<div class="icon">
+											<i class="flaticon-financial-profit"></i>
+										</div>
+                                        <h4 class="title"><a href="convenios-portal.html">Convênios</a></h4>
+										<p>divulgar e acompanhar convênios firmados</p>
+                                        <a href="convenios-portal.html" class="btn">Ver mais</a>
+									</div>
+								</div>
+							</div>
+							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+								<div class="services-item shine-animate-item">
+									<div class="services-thumb">
+                                        <a href="legislacao-portal.html" class="shine-animate"><img src="assets/img/services/foto-8.png" alt="Apexa" /></a>
+									</div>
+									<div class="services-content">
+										<div class="icon">
+											<i class="flaticon-budget"></i>
+										</div>
+                                        <h4 class="title"><a href="legislacao-portal.html">Legislação</a></h4>
+										<p>garantindo transparencia à legislação vigente.</p>
+                                        <a href="legislacao-portal.html" class="btn">Ver mais</a>
 									</div>
 								</div>
 							</div>
@@ -301,101 +664,26 @@
 									</div>
 									<div class="services-content">
 										<div class="icon">
-											<i class="flaticon-investment-1"></i>
+											<i class="flaticon-profit"></i>
 										</div>
-										<h4 class="title"><a href="service-details.html">Licitações</a></h4>
-										<p>Morem ipsum dolor sittemet consectetur adipiscing.</p>
-										<a href="services-details.html" class="btn">Read More</a>
+										<h4 class="title"><a href="services-details.html">Presta&ccedil;&atilde;o de Contas</a></h4>
+										<p>divulgar a prestação de contas</p>
+										<a href="services-details.html" class="btn">Ver mais</a>
 									</div>
 								</div>
 							</div>
 							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
 								<div class="services-item shine-animate-item">
 									<div class="services-thumb">
-										<a href="services-details.html" class="shine-animate"><img src="assets/img/services/foto-3.png" alt="Apexa" /></a>
-									</div>
-									<div class="services-content">
-										<div class="icon">
-											<i class="flaticon-pie-chart"></i>
-										</div>
-										<h4 class="title"><a href="service-details.html">Obras</a></h4>
-										<p>Morem ipsum dolor sittemet consectetur adipiscing.</p>
-										<a href="services-details.html" class="btn">Read More</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
-								<div class="services-item shine-animate-item">
-									<div class="services-thumb">
-										<a href="services-details.html" class="shine-animate"><img src="assets/img/services/foto-4.png" alt="Apexa" /></a>
+										<a href="services-details.html" class="shine-animate"><img src="assets/img/services/foto-1.png" alt="Apexa" /></a>
 									</div>
 									<div class="services-content">
 										<div class="icon">
 											<i class="flaticon-light-bulb"></i>
 										</div>
-										<h4 class="title"><a href="service-details.html">Gestão de pessoas</a></h4>
-										<p>Morem ipsum dolor sittemet consectetur adipiscing.</p>
-										<a href="services-details.html" class="btn">Read More</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
-								<div class="services-item shine-animate-item">
-									<div class="services-thumb">
-										<a href="services-details.html" class="shine-animate"><img src="assets/img/services/foto-5.png" alt="Apexa" /></a>
-									</div>
-									<div class="services-content">
-										<div class="icon">
-											<i class="flaticon-investment"></i>
-										</div>
-										<h4 class="title"><a href="service-details.html">Contratos</a></h4>
-										<p>Morem ipsum dolor sittemet consectetur adipiscing.</p>
-										<a href="services-details.html" class="btn">Read More</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
-								<div class="services-item shine-animate-item">
-									<div class="services-thumb">
-										<a href="services-details.html" class="shine-animate"><img src="assets/img/services/foto-6.png" alt="Apexa" /></a>
-									</div>
-									<div class="services-content">
-										<div class="icon">
-											<i class="flaticon-piggy-bank"></i>
-										</div>
-										<h4 class="title"><a href="service-details.html">LGPD</a></h4>
-										<p>Morem ipsum dolor sittemet consectetur adipiscing.</p>
-										<a href="services-details.html" class="btn">Read More</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
-								<div class="services-item shine-animate-item">
-									<div class="services-thumb">
-										<a href="services-details.html" class="shine-animate"><img src="assets/img/services/foto-7.png" alt="Apexa" /></a>
-									</div>
-									<div class="services-content">
-										<div class="icon">
-											<i class="flaticon-financial-profit"></i>
-										</div>
-										<h4 class="title"><a href="service-details.html">Convênios</a></h4>
-										<p>Morem ipsum dolor sittemet consectetur adipiscing.</p>
-										<a href="services-details.html" class="btn">Read More</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
-								<div class="services-item shine-animate-item">
-									<div class="services-thumb">
-										<a href="services-details.html" class="shine-animate"><img src="assets/img/services/foto-8.png" alt="Apexa" /></a>
-									</div>
-									<div class="services-content">
-										<div class="icon">
-											<i class="flaticon-budget"></i>
-										</div>
-										<h4 class="title"><a href="service-details.html">Legislação</a></h4>
-										<p>Morem ipsum dolor sittemet consectetur adipiscing.</p>
-										<a href="services-details.html" class="btn">Read More</a>
+										<h4 class="title"><a href="services-details.html">Perguntas Frequentes</a></h4>
+										<p>respostas às perguntas frequentes</p>
+										<a href="services-details.html" class="btn">Ver mais</a>
 									</div>
 								</div>
 							</div>
@@ -404,6 +692,140 @@
 				</div>
 			</section>
 			<!-- services-area-end -->
+			<section class="receitas-area">
+				<div class="container">
+					<div class="receitas-layout">
+						<div class="receitas-panel">
+							<div class="receitas-panel__header">
+								<div>
+									<h2>Receitas</h2>
+									<label class="receitas-period" for="receitas-period">
+										<span>Período:</span>
+										<select id="receitas-period"></select>
+									</label>
+								</div>
+								<div class="receitas-total">Total: <strong id="receitas-total">R$ 0,00</strong></div>
+							</div>
+							<div class="receitas-chart" id="receitas-chart">
+								<div class="receitas-loading">Carregando dados...</div>
+							</div>
+								<div class="receitas-footer">
+								Veja mais <a id="receitas-link" href="receitas-consulta.html" target="_blank" rel="noopener noreferrer">clicando aqui</a>
+							</div>
+						</div>
+						<div class="receitas-side">
+							<div class="receitas-side-card">
+								<h3>Contas a Receber</h3>
+								<p>Visualize a listagem completa no painel administrativo</p>
+								<a class="btn" id="receitas-admin-link" href="admin/index.php?class=ContaReceberList">Ver</a>
+							</div>
+							<div class="receitas-side-card">
+								<h3>Novo Lançamento</h3>
+								<p>Cadastre uma nova conta direto no sistema</p>
+								<a class="btn" id="receitas-create-link" href="admin/index.php?class=ContaReceberForm">Ver</a>
+							</div>
+							<div class="receitas-side-card">
+								<h3>Tabelas de Remuneração</h3>
+								<p>Cargos e salários</p>
+								<a class="btn" href="services-details.html">Ver</a>
+							</div>
+							<div class="receitas-side-card">
+								<h3>Contratos de Gestão</h3>
+								<p>Consulte os documentos disponíveis</p>
+								<a class="btn" href="services-details.html">Ver</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="receitas-area" style="padding-top: 0;">
+				<div class="container">
+					<div class="receitas-panel">
+						<div class="receitas-panel__header">
+							<div>
+								<h2>Despesas Empenhadas</h2>
+								<label class="receitas-period" for="despesas-period">
+									<span>Período:</span>
+									<select id="despesas-period"></select>
+								</label>
+							</div>
+							<div class="receitas-total">Total: <strong id="despesas-total">R$ 0,00</strong></div>
+						</div>
+						<div class="receitas-chart" id="despesas-chart">
+							<div class="receitas-loading">Carregando dados...</div>
+						</div>
+						<div class="receitas-footer">
+							Veja mais <a id="despesas-link" href="despesas-consulta.html">clicando aqui</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="transparency-links-area">
+				<div class="container">
+					<div class="transparency-links-grid">
+						<a class="transparency-link-card" href="services-details.html">
+							<div class="transparency-link-card__thumb"><span>Dados da Despesa Diária</span></div>
+							<div class="transparency-link-card__meta">Em tempo real</div>
+							<div class="transparency-link-card__title">Despesa Diária</div>
+						</a>
+						<a class="transparency-link-card" href="services-details.html">
+							<div class="transparency-link-card__thumb"><span>Legislações sobre Diárias</span></div>
+							<div class="transparency-link-card__meta">Legislação/Tabela</div>
+							<div class="transparency-link-card__title">Legislações sobre Diárias</div>
+						</a>
+						<a class="transparency-link-card" href="services-details.html">
+							<div class="transparency-link-card__thumb"><span>Diárias e Passagens</span></div>
+							<div class="transparency-link-card__meta">Consulta de Gastos</div>
+							<div class="transparency-link-card__title">Diárias e Passagens</div>
+						</a>
+						<a class="transparency-link-card" href="services-details.html">
+							<div class="transparency-link-card__thumb"><span>Notas Fiscais Eletrônicas de Compras</span></div>
+							<div class="transparency-link-card__meta">NFe</div>
+							<div class="transparency-link-card__title">Notas Fiscais Eletrônicas de Compras</div>
+						</a>
+						<a class="transparency-link-card" href="services-details.html">
+							<div class="transparency-link-card__thumb"><span>E-SIC Informação ao Cidadão</span></div>
+							<div class="transparency-link-card__meta">Serviço de Informações ao Cidadão</div>
+							<div class="transparency-link-card__title">E-SIC Informações ao Cidadão</div>
+						</a>
+						<a class="transparency-link-card" href="services-details.html">
+							<div class="transparency-link-card__thumb"><span>CMRI</span></div>
+							<div class="transparency-link-card__meta">Reavaliação de Informações</div>
+							<div class="transparency-link-card__title">CMRI</div>
+						</a>
+						<a class="transparency-link-card" href="services-details.html">
+							<div class="transparency-link-card__thumb"><span>E-OUV Ouvidoria</span></div>
+							<div class="transparency-link-card__meta">Sistema de Ouvidorias</div>
+							<div class="transparency-link-card__title">E-OUV</div>
+						</a>
+						<a class="transparency-link-card" href="services-details.html">
+							<div class="transparency-link-card__thumb"><span>Código de Ética</span></div>
+							<div class="transparency-link-card__meta">Download</div>
+							<div class="transparency-link-card__title">Código de Ética</div>
+						</a>
+						<a class="transparency-link-card" href="services-details.html">
+							<div class="transparency-link-card__thumb"><span>MROSC</span></div>
+							<div class="transparency-link-card__meta">MROSC</div>
+							<div class="transparency-link-card__title">Portal da Transparência do Terceiro Setor</div>
+						</a>
+						<a class="transparency-link-card" href="services-details.html">
+							<div class="transparency-link-card__thumb"><span>Dados Abertos</span></div>
+							<div class="transparency-link-card__meta">Dados Abertos</div>
+							<div class="transparency-link-card__title">Dados Abertos</div>
+						</a>
+						<a class="transparency-link-card" href="services-details.html">
+							<div class="transparency-link-card__thumb"><span>Carta de Serviços ao Usuário</span></div>
+							<div class="transparency-link-card__meta">Carta de Serviços ao Usuário</div>
+							<div class="transparency-link-card__title">Carta de Serviços ao Usuário</div>
+						</a>
+						<a class="transparency-link-card" href="services-details.html">
+							<div class="transparency-link-card__thumb"><span>Serviço de Transporte Público</span></div>
+							<div class="transparency-link-card__meta">Serviço de Transporte Público</div>
+							<div class="transparency-link-card__title">Serviço de Transporte Público</div>
+						</a>
+					</div>
+				</div>
+			</section>
 		</main>
 		<!-- main-area-end -->
 		<!-- footer-area -->
@@ -526,5 +948,192 @@
 		<script src="assets/js/wow.min.js"></script>
 		<script src="assets/js/aos.js"></script>
 		<script src="assets/js/main.js"></script>
+		<script>
+			(function () {
+				const endpoint = 'admin/public_receitas_data.php';
+				const periodSelect = document.getElementById('receitas-period');
+				const totalElement = document.getElementById('receitas-total');
+				const chartElement = document.getElementById('receitas-chart');
+				const adminLink = document.getElementById('receitas-admin-link');
+				const createLink = document.getElementById('receitas-create-link');
+
+				if (!periodSelect || !totalElement || !chartElement) {
+					return;
+				}
+
+				const currencyFormatter = new Intl.NumberFormat('pt-BR', {
+					style: 'currency',
+					currency: 'BRL'
+				});
+
+				function renderPeriods(periods, activePeriod) {
+					if (periodSelect.dataset.initialized === 'true') {
+						periodSelect.value = activePeriod || '';
+						return;
+					}
+
+					periodSelect.innerHTML = periods
+						.map(function (period) {
+							return '<option value="' + period.value + '">' + period.label + '</option>';
+						})
+						.join('');
+
+					periodSelect.value = activePeriod || '';
+					periodSelect.dataset.initialized = 'true';
+				}
+
+				function renderChart(items) {
+					if (!items.length) {
+						chartElement.innerHTML = '<div class="receitas-empty">Nenhum registro encontrado para o período selecionado.</div>';
+						return;
+					}
+
+					chartElement.innerHTML = items.map(function (item) {
+						return [
+							'<div class="receitas-row">',
+								'<div class="receitas-label">' + item.label + '</div>',
+								'<div class="receitas-bar-track"><div class="receitas-bar-fill" style="width:' + item.percentage + '%;"></div></div>',
+								'<div class="receitas-value">' + currencyFormatter.format(item.value) + '</div>',
+							'</div>'
+						].join('');
+					}).join('');
+				}
+
+				function setLoading() {
+					chartElement.innerHTML = '<div class="receitas-loading">Carregando dados...</div>';
+				}
+
+				function setError() {
+					chartElement.innerHTML = '<div class="receitas-empty">Não foi possível carregar os dados agora.</div>';
+				}
+
+				function loadReceitas(period) {
+					setLoading();
+
+					const url = period ? endpoint + '?period=' + encodeURIComponent(period) : endpoint;
+
+					fetch(url, { headers: { Accept: 'application/json' } })
+						.then(function (response) {
+							if (!response.ok) {
+								throw new Error('Falha ao carregar os dados');
+							}
+
+							return response.json();
+						})
+						.then(function (data) {
+							renderPeriods(data.periods || [], data.period || '');
+							totalElement.textContent = currencyFormatter.format(data.total || 0);
+							renderChart(data.items || []);
+
+							if (data.links) {
+								if (data.links.list) {
+									adminLink.href = data.links.list;
+								}
+
+								if (data.links.create) {
+									createLink.href = data.links.create;
+								}
+							}
+						})
+						.catch(function () {
+							setError();
+						});
+				}
+
+				periodSelect.addEventListener('change', function () {
+					loadReceitas(periodSelect.value);
+				});
+
+				loadReceitas();
+			})();
+
+			(function () {
+				const endpoint = 'admin/public_despesas_empenhadas_data.php';
+				const periodSelect = document.getElementById('despesas-period');
+				const totalElement = document.getElementById('despesas-total');
+				const chartElement = document.getElementById('despesas-chart');
+
+				if (!periodSelect || !totalElement || !chartElement) {
+					return;
+				}
+
+				const currencyFormatter = new Intl.NumberFormat('pt-BR', {
+					style: 'currency',
+					currency: 'BRL'
+				});
+
+				function renderPeriods(periods, activePeriod) {
+					if (periodSelect.dataset.initialized === 'true') {
+						periodSelect.value = activePeriod || '';
+						return;
+					}
+
+					periodSelect.innerHTML = periods
+						.map(function (period) {
+							return '<option value="' + period.value + '">' + period.label + '</option>';
+						})
+						.join('');
+
+					periodSelect.value = activePeriod || '';
+					periodSelect.dataset.initialized = 'true';
+				}
+
+				function renderChart(items) {
+					if (!items.length) {
+						chartElement.innerHTML = '<div class="receitas-empty">Nenhum registro encontrado para o período selecionado.</div>';
+						return;
+					}
+
+					chartElement.innerHTML = items.map(function (item) {
+						return [
+							'<div class="receitas-row">',
+								'<div class="receitas-label">' + item.label + '</div>',
+								'<div class="receitas-bar-track"><div class="receitas-bar-fill" style="width:' + item.percentage + '%;"></div></div>',
+								'<div class="receitas-value">' + currencyFormatter.format(item.value) + '</div>',
+							'</div>'
+						].join('');
+					}).join('');
+				}
+
+				function setLoading() {
+					chartElement.innerHTML = '<div class="receitas-loading">Carregando dados...</div>';
+				}
+
+				function setError() {
+					chartElement.innerHTML = '<div class="receitas-empty">Não foi possível carregar os dados agora.</div>';
+				}
+
+				function loadDespesas(period) {
+					setLoading();
+
+					const url = period ? endpoint + '?period=' + encodeURIComponent(period) : endpoint;
+
+					fetch(url, { headers: { Accept: 'application/json' } })
+						.then(function (response) {
+							if (!response.ok) {
+								throw new Error('Falha ao carregar os dados');
+							}
+
+							return response.json();
+						})
+						.then(function (data) {
+							renderPeriods(data.periods || [], data.period || '');
+							totalElement.textContent = currencyFormatter.format(data.total || 0);
+							renderChart(data.items || []);
+						})
+						.catch(function () {
+							setError();
+						});
+				}
+
+				periodSelect.addEventListener('change', function () {
+					loadDespesas(periodSelect.value);
+				});
+
+				loadDespesas();
+			})();
+		</script>
 	</body>
 </html>
+
+

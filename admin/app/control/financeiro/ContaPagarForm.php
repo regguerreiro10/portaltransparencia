@@ -220,7 +220,7 @@ class ContaPagarForm extends TPage
         {
             $this->onEdit($param);
 
-            $this->form->getField('pessoa_id')->setEditable(false);
+            $this->form->getField('pessoa_id')->setEditable(true);
             $this->form->getField('categoria_id')->setEditable(false);
             $this->form->getField('valor')->setEditable(false);
             $this->form->getField('dt_vencimento')->setEditable(false);
@@ -239,4 +239,3 @@ class ContaPagarForm extends TPage
     }
 
 }
-

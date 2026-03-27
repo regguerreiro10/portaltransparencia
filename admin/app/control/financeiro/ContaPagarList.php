@@ -185,6 +185,25 @@ class ContaPagarList extends TPage
             }
         });        
 
+        $column_status->setTransformer(function($value, $object, $row, $cell = null, $last_row = null)
+        {
+            $hoje = date('Y-m-d');
+            $dataVencimento = !empty($object->dt_vencimento) ? trim((string) $object->dt_vencimento) : null;
+            $dataPagamento = !empty($object->dt_pagamento) ? trim((string) $object->dt_pagamento) : null;
+
+            if (!$dataPagamento && $dataVencimento && $hoje > $dataVencimento)
+            {
+                return "<label style='width:120px;' class='label label-danger'> ATRASADA </label>";
+            }
+
+            if ($dataPagamento)
+            {
+                return "<label style='width:120px;' class='label label-success'> QUITADA </label>";
+            }
+
+            return "<label style='width:120px;' class='label label-warning'> EM ABERTA </label>";
+        });
+
         $order_id = new TAction(array($this, 'onReload'));
         $order_id->setParameter('order', 'id');
         $column_id->setAction($order_id);
@@ -1077,4 +1096,3 @@ class ContaPagarList extends TPage
     }
 
 }
-
