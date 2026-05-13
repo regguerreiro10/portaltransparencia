@@ -39,7 +39,8 @@ class ContaAnexoForm extends TPage
 
         $tipo_anexo_id->addValidation("Tipo anexo", new TRequiredValidator()); 
 
-        $conta_id->setValue(TSession::getValue('conta_pagar_form_view_conta_id'));
+        $currentContaId = $param['conta_id'] ?? TSession::getValue('ContaAnexoHeaderListload_filter_conta_id') ?? TSession::getValue('conta_pagar_form_view_conta_id');
+        $conta_id->setValue($currentContaId);
         $tipo_anexo_id->enableSearch();
         $arquivo->enableFileHandling();
         $id->setSize(200);
@@ -177,4 +178,3 @@ class ContaAnexoForm extends TPage
     }
 
 }
-

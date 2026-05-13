@@ -1,5 +1,7 @@
 <?php
 
+use Adianti\Base\AdiantiFileSaveTrait;
+
 class ContaPagarForm extends TPage
 {
     protected BootstrapFormBuilder $form;
@@ -8,6 +10,8 @@ class ContaPagarForm extends TPage
     private static $activeRecord = 'Conta';
     private static $primaryKey = 'id';
     private static $formName = 'form_ContaPagarForm';
+
+    use AdiantiFileSaveTrait;
 
     /**
      * Form constructor
@@ -46,6 +50,7 @@ class ContaPagarForm extends TPage
         $valor = new TNumeric('valor', '2', ',', '.' );
         $parcela = new TSpinner('parcela');
         $obs = new TText('obs');
+        $arquivo = new TFile('arquivo');
 
         $pessoa_id->addValidation("Pessoa", new TRequiredValidator()); 
         $categoria_id->addValidation("Categoria", new TRequiredValidator()); 
@@ -56,6 +61,7 @@ class ContaPagarForm extends TPage
         $pessoa_id->enableSearch();
         $categoria_id->enableSearch();
         $forma_pagamento_id->enableSearch();
+        $arquivo->enableFileHandling();
 
         $dt_emissao->setMask('dd/mm/yyyy');
         $dt_pagamento->setMask('dd/mm/yyyy');
@@ -75,6 +81,7 @@ class ContaPagarForm extends TPage
         $dt_vencimento->setSize(110);
         $categoria_id->setSize('100%');
         $forma_pagamento_id->setSize('100%');
+        $arquivo->setSize('100%');
 
         $row1 = $this->form->addFields([new TLabel("Id:", null, '14px', null, '100%'),$id],[]);
         $row1->layout = ['col-sm-6','col-sm-6'];
@@ -93,6 +100,9 @@ class ContaPagarForm extends TPage
 
         $row6 = $this->form->addFields([new TLabel("Obs:", null, '14px', null, '100%'),$obs]);
         $row6->layout = [' col-sm-12'];
+
+        $row7 = $this->form->addFields([new TLabel("Upload de arquivo:", null, '14px', null, '100%'),$arquivo]);
+        $row7->layout = [' col-sm-12'];
 
         // create the form actions
         $btn_onsave = $this->form->addAction("Salvar", new TAction([$this, 'onSave']), 'fas:save #ffffff');
@@ -138,6 +148,21 @@ class ContaPagarForm extends TPage
             $object->tipo_conta_id = TipoConta::PAGAR;
 
             $object->store(); // save the object 
+
+            $hasAttachmentData = !empty($data->arquivo);
+            if ($hasAttachmentData)
+            {
+                if (empty($data->arquivo))
+                {
+                    throw new Exception('Selecione um arquivo para salvar o anexo.');
+                }
+
+                $anexo = new ContaAnexo();
+                $anexo->conta_id = $object->id;
+                $anexo->store();
+
+                $this->saveFile($anexo, $data, 'arquivo', 'app/anexos');
+            }
 
             $loadPageParam = [];
 

@@ -34,6 +34,90 @@
       </menuitem>
     </menu>
   </menuitem>
+  <menuitem label="Licitações">
+    <icon>fas:gavel fa-fw</icon>
+    <menu>
+      <menuitem label="Cadastro">
+        <action>LicitacaoList#method=onShow</action>
+        <icon>fas:file-signature fa-fw</icon>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="Processo administrativo">
+    <icon>fas:project-diagram fa-fw</icon>
+    <menu>
+      <menuitem label="Caixa de Entrada de Processos">
+        <action>ProcessoAdministrativoList#method=onShow</action>
+        <icon>fas:inbox fa-fw</icon>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="Processo legislativo">
+    <icon>fas:balance-scale fa-fw</icon>
+    <menu>
+      <menuitem label="Cadastro">
+        <action>ProcessoLegislativoList#method=onShow</action>
+        <icon>fas:clipboard-list fa-fw</icon>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="Comunicação">
+    <icon>far:newspaper fa-fw</icon>
+    <menu>
+      <menuitem label="Notícias">
+        <action>NoticiaList#method=onShow</action>
+        <icon>fas:chevron-right fa-fw</icon>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="Galeria">
+    <icon>fas:image fa-fw</icon>
+    <menu>
+      <menuitem label="Cadastro">
+        <action>GaleriaList#method=onShow</action>
+        <icon>fas:images fa-fw</icon>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="Memorandos">
+    <icon>fas:envelope-open-text fa-fw</icon>
+    <menu>
+      <menuitem label="Gerenciar">
+        <action>MemorandoList#method=onShow</action>
+        <icon>fas:caret-square-down fa-fw</icon>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="Gestão de documentos">
+    <icon>fas:copy fa-fw</icon>
+    <menu>
+      <menuitem label="Cadastro">
+        <action>DocumentoPublicoList</action>
+        <icon>fas:align-center fa-fw</icon>
+      </menuitem>
+    </menu>
+  </menuitem>
+  <menuitem label="Modulo financeiro transparência">
+    <icon>fas:wallet fa-fw</icon>
+    <menu>
+      <menuitem label="Cadastros financeiros">
+        <action>FinanceiroCadastroList</action>
+        <icon>fas:chevron-right fa-fw</icon>
+      </menuitem>
+      <menuitem label="Categorias financeiras">
+        <action>FinanceiroCategoriaList</action>
+        <icon>fas:chevron-right fa-fw</icon>
+      </menuitem>
+      <menuitem label="Subcategorias financeiras">
+        <action>FinanceiroSubcategoriaList</action>
+        <icon>fas:chevron-right fa-fw</icon>
+      </menuitem>
+      <menuitem label="Arquivos financeiros">
+        <action>FinanceiroArquivoList</action>
+        <icon>fas:chevron-right fa-fw</icon>
+      </menuitem>
+    </menu>
+  </menuitem>
   <menuitem label="Financeiro">
     <icon>fas:money-bill-alt fa-fw</icon>
     <menu>

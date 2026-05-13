@@ -95,6 +95,28 @@
         $(".search__popup").removeClass("search-opened");
         $(".search-popup-overlay").removeClass("search-popup-overlay-open");
     });
+    $(".search-popup-overlay").on("click", function () {
+        $(".search__popup").removeClass("search-opened");
+        $(".search-popup-overlay").removeClass("search-popup-overlay-open");
+    });
+    $(".search__form form, .tgmobile__search form").on("submit", function (event) {
+        var form = this;
+        var input = form.querySelector("input[name='q'], input[name='busca'], .search-input-field");
+        var messageElement = form.querySelector(".search-advanced__message");
+        var query = input ? input.value.trim() : "";
+
+        event.preventDefault();
+
+        if (!query) {
+            if (messageElement) {
+                messageElement.textContent = "Digite um termo para realizar a busca no portal.";
+                messageElement.style.display = "block";
+            }
+            return;
+        }
+
+        window.location.href = "formulario.php?q=" + encodeURIComponent(query);
+    });
 
     /*=============================================
 =     Offcanvas Menu      =

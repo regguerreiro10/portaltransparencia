@@ -91,6 +91,20 @@
 				height: auto;
 				border-radius: 18px;
 			}
+
+			.search-advanced__title {
+				margin: 0 0 18px;
+				font-size: 30px;
+				font-weight: 800;
+				color: #17324d;
+			}
+
+			.search-advanced__message {
+				display: none;
+				margin-top: 14px;
+				color: #b42318;
+				font-weight: 700;
+			}
 		</style>
 	</head>
 	<body>
@@ -139,6 +153,9 @@
 												
 											</li>
 											<li>
+												<a href="galeria.html">Galeria</a>
+											</li>
+											<li>
 												<a href="blog.html">Notícias</a>
 												
 											</li>
@@ -146,6 +163,19 @@
 										</ul>
 									</div>
 									
+									<div class="tgmenu__action d-none d-md-block">
+										<ul class="list-wrap">
+											<li class="header-search">
+												<a href="javascript:void(0)" class="search-open-btn">
+													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
+														<path d="M19 19.0002L14.657 14.6572M14.657 14.6572C15.3999 13.9143 15.9892 13.0324 16.3912 12.0618C16.7933 11.0911 17.0002 10.0508 17.0002 9.00021C17.0002 7.9496 16.7933 6.90929 16.3913 5.93866C15.9892 4.96803 15.3999 4.08609 14.657 3.34321C13.9141 2.60032 13.0322 2.01103 12.0616 1.60898C11.0909 1.20693 10.0506 1 9.00002 1C7.94942 1 6.90911 1.20693 5.93848 1.60898C4.96785 2.01103 4.08591 2.60032 3.34302 3.34321C1.84269 4.84354 0.999817 6.87842 0.999817 9.00021C0.999817 11.122 1.84269 13.1569 3.34302 14.6572C4.84335 16.1575 6.87824 17.0004 9.00002 17.0004C11.1218 17.0004 13.1567 16.1575 14.657 14.6572Z" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+													</svg>
+												</a>
+											</li>
+											
+											<li class="header-btn"><a href="contact.html" class="btn">Fale Conosco</a></li>
+										</ul>
+									</div>
 									<div class="mobile-nav-toggler">
 										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="none">
 											<path d="M0 2C0 0.895431 0.895431 0 2 0C3.10457 0 4 0.895431 4 2C4 3.10457 3.10457 4 2 4C0.895431 4 0 3.10457 0 2Z" fill="currentcolor" />
@@ -169,9 +199,10 @@
 										<a href="index.html"><img src="assets/img/logo/logo.png" alt="Logo" /></a>
 									</div>
 									<div class="tgmobile__search">
-										<form action="#">
-											<input type="text" placeholder="Search here..." />
-											<button><i class="fas fa-search"></i></button>
+										<form action="formulario.php" method="get">
+											<input type="hidden" name="tipo_busca" value="texto_busca" />
+											<input type="text" name="q" placeholder="Busca avançada" />
+											<button type="submit"><i class="fas fa-search"></i></button>
 										</form>
 									</div>
 									<div class="tgmobile__menu-outer">
@@ -219,7 +250,7 @@
 						<div class="col-12">
 							<div class="search__wrapper">
 								<div class="search__close">
-									<button type="button" class="search-close-btn">
+									<button type="button" class="search-close-btn" aria-label="Fechar pesquisa">
 										<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M17 1L1 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 											<path d="M1 1L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -227,17 +258,19 @@
 									</button>
 								</div>
 								<div class="search__form">
-									<form action="#">
+									<form action="formulario.php" method="get">
+										<h2 class="search-advanced__title">Busca no portal</h2>
 										<div class="search__input">
-											<input class="search-input-field" type="text" placeholder="Type keywords here" />
+											<input class="search-input-field" type="text" name="q" placeholder="Digite o termo da consulta" />
 											<span class="search-focus-border"></span>
-											<button>
+											<button type="submit" aria-label="Pesquisar">
 												<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 													<path d="M9.55 18.1C14.272 18.1 18.1 14.272 18.1 9.55C18.1 4.82797 14.272 1 9.55 1C4.82797 1 1 4.82797 1 9.55C1 14.272 4.82797 18.1 9.55 18.1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 													<path d="M19.0002 19.0002L17.2002 17.2002" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 												</svg>
 											</button>
 										</div>
+										<div class="search-advanced__message" aria-live="polite"></div>
 									</form>
 								</div>
 							</div>
@@ -336,7 +369,7 @@
 											<img src="assets/img/icons/property.png" />
 										</div>
 										<div class="services__content-two">
-											<h2 class="title"><a href="services-details.html">IPTU</a></h2>
+											<h2 class="title"><a href="iptu.html">IPTU</a></h2>
 										</div>
 									</div>
 								</div>
@@ -346,7 +379,7 @@
 											<img src="assets/img/icons/briefcase.png" />
 										</div>
 										<div class="services__content-two">
-											<h2 class="title"><a href="services-details.html">Serviços</a></h2>
+											<h2 class="title"><a href="services-5.html">Serviços</a></h2>
 										</div>
 									</div>
 								</div>
@@ -356,7 +389,7 @@
 											<img src="assets/img/icons/invoice.png" />
 										</div>
 										<div class="services__content-two">
-											<h2 class="title"><a href="services-details.html">Nota Fiscal</a></h2>
+											<h2 class="title"><a href="nota-fiscal.html">Nota Fiscal</a></h2>
 										</div>
 									</div>
 								</div>
@@ -366,7 +399,7 @@
 											<i class="flaticon-target"></i>
 										</div>
 										<div class="services__content-two">
-											<h2 class="title"><a href="services-details.html">Vagas e Oportunidades</a></h2>
+											<h2 class="title"><a href="agenda-eventos.html">Agenda de Eventos</a></h2>
 										</div>
 									</div>
 								</div>
@@ -376,7 +409,7 @@
 											<img src="assets/img/icons/interview.png" />
 										</div>
 										<div class="services__content-two">
-											<h2 class="title"><a href="services-details.html">Empregos</a></h2>
+											<h2 class="title"><a href="funsat-empregos.html">Empregos</a></h2>
 										</div>
 									</div>
 								</div>
@@ -386,7 +419,7 @@
 											<img src="assets/img/icons/balance.png" />
 										</div>
 										<div class="services__content-two">
-											<h2 class="title"><a href="services-details.html">Legislação Municipal</a></h2>
+											<h2 class="title"><a href="legislacao-portal.html">Legislação Municipal</a></h2>
 										</div>
 									</div>
 								</div>
@@ -396,7 +429,7 @@
 											<img src="assets/img/icons/document.png" />
 										</div>
 										<div class="services__content-two">
-											<h2 class="title"><a href="services-details.html">Alvarás e Certidões</a></h2>
+											<h2 class="title"><a href="emitir-certidoes-alvara.html">Alvarás e Certidões</a></h2>
 										</div>
 									</div>
 								</div>
@@ -406,7 +439,7 @@
 											<img src="assets/img/icons/debito.png" />
 										</div>
 										<div class="services__content-two">
-											<h2 class="title"><a href="services-details.html">Débitos Economicos</a></h2>
+											<h2 class="title"><a href="emissao-guias-extrato.html">Débitos Economicos</a></h2>
 										</div>
 									</div>
 								</div>
@@ -440,8 +473,8 @@
 					</div>
 					<div class="row">
 						<div class="col-12">
-							<div class="swiper-container project-active">
-								<div class="swiper-wrapper">
+							<div class="swiper-container project-active" id="home-news-slider">
+								<div class="swiper-wrapper" id="home-news-wrapper">
 									<div class="swiper-slide">
 										<div class="project__item-three shine-animate-item">
 											<div class="project__content-three">
@@ -512,10 +545,10 @@
 									<img src="assets/img/project/foto-1.png" alt="Apexa" />
 								</div>
 								<div class="project__content-two">
-									<h2 class="title"><a href="project-details.html">Local de Interesse</a></h2>
+									<h2 class="title"><a href="https://www.parquedasnacoesindigenas.ms.gov.br">Local de Interesse</a></h2>
 									<span></span>
 									<div class="link-arrow link-arrow-two">
-										<a href="project-details.html">
+										<a href="https://www.parquedasnacoesindigenas.ms.gov.br">
 											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 15" fill="none">
 												<path fill-rule="evenodd" clip-rule="evenodd" d="M17.6293 3.27956C17.7117 2.80339 17.4427 2.34761 17.0096 2.17811C16.9477 2.15384 16.8824 2.13551 16.8144 2.12375L6.96087 0.419136C6.4166 0.325033 5.89918 0.689841 5.80497 1.23409C5.71085 1.77828 6.0757 2.29576 6.61988 2.38991L14.0947 3.68293L1.3658 12.6573C0.914426 12.9756 0.806485 13.5994 1.12473 14.0508C1.44298 14.5022 2.06688 14.6101 2.51825 14.2919L15.2471 5.31752L13.954 12.7923C13.8599 13.3365 14.2248 13.854 14.7689 13.9481C15.3132 14.0422 15.8306 13.6774 15.9248 13.1332L17.6293 3.27956Z" fill="currentcolor" />
 												<path fill-rule="evenodd" clip-rule="evenodd" d="M17.6293 3.27956C17.7117 2.80339 17.4427 2.34761 17.0096 2.17811C16.9477 2.15384 16.8824 2.13551 16.8144 2.12375L6.96087 0.419136C6.4166 0.325033 5.89918 0.689841 5.80497 1.23409C5.71085 1.77828 6.0757 2.29576 6.61988 2.38991L14.0947 3.68293L1.3658 12.6573C0.914426 12.9756 0.806485 13.5994 1.12473 14.0508C1.44298 14.5022 2.06688 14.6101 2.51825 14.2919L15.2471 5.31752L13.954 12.7923C13.8599 13.3365 14.2248 13.854 14.7689 13.9481C15.3132 14.0422 15.8306 13.6774 15.9248 13.1332L17.6293 3.27956Z" fill="currentcolor" />
@@ -531,10 +564,10 @@
 									<img src="assets/img/project/foto-2.png" alt="Apexa" />
 								</div>
 								<div class="project__content-two">
-									<h2 class="title"><a href="project-details.html">Local de Interesse</a></h2>
+									<h2 class="title"><a href="https://bioparquepantanal.ms.gov.br">Local de Interesse</a></h2>
 									<span></span>
 									<div class="link-arrow link-arrow-two">
-										<a href="project-details.html">
+										<a href="https://bioparquepantanal.ms.gov.br">
 											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 15" fill="none">
 												<path fill-rule="evenodd" clip-rule="evenodd" d="M17.6293 3.27956C17.7117 2.80339 17.4427 2.34761 17.0096 2.17811C16.9477 2.15384 16.8824 2.13551 16.8144 2.12375L6.96087 0.419136C6.4166 0.325033 5.89918 0.689841 5.80497 1.23409C5.71085 1.77828 6.0757 2.29576 6.61988 2.38991L14.0947 3.68293L1.3658 12.6573C0.914426 12.9756 0.806485 13.5994 1.12473 14.0508C1.44298 14.5022 2.06688 14.6101 2.51825 14.2919L15.2471 5.31752L13.954 12.7923C13.8599 13.3365 14.2248 13.854 14.7689 13.9481C15.3132 14.0422 15.8306 13.6774 15.9248 13.1332L17.6293 3.27956Z" fill="currentcolor" />
 												<path fill-rule="evenodd" clip-rule="evenodd" d="M17.6293 3.27956C17.7117 2.80339 17.4427 2.34761 17.0096 2.17811C16.9477 2.15384 16.8824 2.13551 16.8144 2.12375L6.96087 0.419136C6.4166 0.325033 5.89918 0.689841 5.80497 1.23409C5.71085 1.77828 6.0757 2.29576 6.61988 2.38991L14.0947 3.68293L1.3658 12.6573C0.914426 12.9756 0.806485 13.5994 1.12473 14.0508C1.44298 14.5022 2.06688 14.6101 2.51825 14.2919L15.2471 5.31752L13.954 12.7923C13.8599 13.3365 14.2248 13.854 14.7689 13.9481C15.3132 14.0422 15.8306 13.6774 15.9248 13.1332L17.6293 3.27956Z" fill="currentcolor" />
@@ -550,10 +583,10 @@
 									<img src="assets/img/project/foto-3.png" alt="Apexa" />
 								</div>
 								<div class="project__content-two">
-									<h2 class="title"><a href="project-details.html">Local de interesse</a></h2>
+									<h2 class="title"><a href="index.html">Local de interesse</a></h2>
 									<span></span>
 									<div class="link-arrow link-arrow-two">
-										<a href="project-details.html">
+										<a href="index.html">
 											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 15" fill="none">
 												<path fill-rule="evenodd" clip-rule="evenodd" d="M17.6293 3.27956C17.7117 2.80339 17.4427 2.34761 17.0096 2.17811C16.9477 2.15384 16.8824 2.13551 16.8144 2.12375L6.96087 0.419136C6.4166 0.325033 5.89918 0.689841 5.80497 1.23409C5.71085 1.77828 6.0757 2.29576 6.61988 2.38991L14.0947 3.68293L1.3658 12.6573C0.914426 12.9756 0.806485 13.5994 1.12473 14.0508C1.44298 14.5022 2.06688 14.6101 2.51825 14.2919L15.2471 5.31752L13.954 12.7923C13.8599 13.3365 14.2248 13.854 14.7689 13.9481C15.3132 14.0422 15.8306 13.6774 15.9248 13.1332L17.6293 3.27956Z" fill="currentcolor" />
 												<path fill-rule="evenodd" clip-rule="evenodd" d="M17.6293 3.27956C17.7117 2.80339 17.4427 2.34761 17.0096 2.17811C16.9477 2.15384 16.8824 2.13551 16.8144 2.12375L6.96087 0.419136C6.4166 0.325033 5.89918 0.689841 5.80497 1.23409C5.71085 1.77828 6.0757 2.29576 6.61988 2.38991L14.0947 3.68293L1.3658 12.6573C0.914426 12.9756 0.806485 13.5994 1.12473 14.0508C1.44298 14.5022 2.06688 14.6101 2.51825 14.2919L15.2471 5.31752L13.954 12.7923C13.8599 13.3365 14.2248 13.854 14.7689 13.9481C15.3132 14.0422 15.8306 13.6774 15.9248 13.1332L17.6293 3.27956Z" fill="currentcolor" />
@@ -569,10 +602,10 @@
 									<img src="assets/img/project/foto-4.png" alt="Apexa" />
 								</div>
 								<div class="project__content-two">
-									<h2 class="title"><a href="project-details.html">Local Interesse</a></h2>
+									<h2 class="title"><a href="https://www.google.com/search?sca_esv=561640084&rlz=1CDGOYI_enUS1037US1037&hl=pt&sxsrf=AB5stBgIQROLda6Bq9P65GHC2RhaSROrkg:1693502649296&q=Monumento+Maria+Fumaça&ludocid=18429712535542907005&lsig=AB86z5Wbp_Rm2AuU7wQj-3ViHP67&kgs=586479cdaf01d61e&shndl=-1&shem=lbse,lsp&source=sh/x/kp/local/m1/3">Local Interesse</a></h2>
 									<span></span>
 									<div class="link-arrow link-arrow-two">
-										<a href="project-details.html">
+										<a href="https://www.google.com/search?sca_esv=561640084&rlz=1CDGOYI_enUS1037US1037&hl=pt&sxsrf=AB5stBgIQROLda6Bq9P65GHC2RhaSROrkg:1693502649296&q=Monumento+Maria+Fumaça&ludocid=18429712535542907005&lsig=AB86z5Wbp_Rm2AuU7wQj-3ViHP67&kgs=586479cdaf01d61e&shndl=-1&shem=lbse,lsp&source=sh/x/kp/local/m1/3">
 											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 15" fill="none">
 												<path fill-rule="evenodd" clip-rule="evenodd" d="M17.6293 3.27956C17.7117 2.80339 17.4427 2.34761 17.0096 2.17811C16.9477 2.15384 16.8824 2.13551 16.8144 2.12375L6.96087 0.419136C6.4166 0.325033 5.89918 0.689841 5.80497 1.23409C5.71085 1.77828 6.0757 2.29576 6.61988 2.38991L14.0947 3.68293L1.3658 12.6573C0.914426 12.9756 0.806485 13.5994 1.12473 14.0508C1.44298 14.5022 2.06688 14.6101 2.51825 14.2919L15.2471 5.31752L13.954 12.7923C13.8599 13.3365 14.2248 13.854 14.7689 13.9481C15.3132 14.0422 15.8306 13.6774 15.9248 13.1332L17.6293 3.27956Z" fill="currentcolor" />
 												<path fill-rule="evenodd" clip-rule="evenodd" d="M17.6293 3.27956C17.7117 2.80339 17.4427 2.34761 17.0096 2.17811C16.9477 2.15384 16.8824 2.13551 16.8144 2.12375L6.96087 0.419136C6.4166 0.325033 5.89918 0.689841 5.80497 1.23409C5.71085 1.77828 6.0757 2.29576 6.61988 2.38991L14.0947 3.68293L1.3658 12.6573C0.914426 12.9756 0.806485 13.5994 1.12473 14.0508C1.44298 14.5022 2.06688 14.6101 2.51825 14.2919L15.2471 5.31752L13.954 12.7923C13.8599 13.3365 14.2248 13.854 14.7689 13.9481C15.3132 14.0422 15.8306 13.6774 15.9248 13.1332L17.6293 3.27956Z" fill="currentcolor" />
@@ -588,10 +621,10 @@
 									<img src="assets/img/project/foto-6.png" alt="Apexa" />
 								</div>
 								<div class="project__content-two">
-									<h2 class="title"><a href="project-details.html">Local de Interesse</a></h2>
+									<h2 class="title"><a href="https://www.google.com/search?sca_esv=561640084&rlz=1CDGOYI_enUS1037US1037&hl=pt&sxsrf=AB5stBiVs4bEvrQumyh-7dzed-nK24K6pQ:1693502723031&q=Praça+das+Araras&ludocid=2226090553491232061&lsig=AB86z5VSQGf1ocB7qThILXeJU1PK&kgs=0adc0b32cff2afd9&shndl=-1&shem=lbse,lsp&source=sh/x/kp/local/m1/3">Local de Interesse</a></h2>
 									<span></span>
 									<div class="link-arrow link-arrow-two">
-										<a href="project-details.html">
+										<a href="https://www.google.com/search?sca_esv=561640084&rlz=1CDGOYI_enUS1037US1037&hl=pt&sxsrf=AB5stBiVs4bEvrQumyh-7dzed-nK24K6pQ:1693502723031&q=Praça+das+Araras&ludocid=2226090553491232061&lsig=AB86z5VSQGf1ocB7qThILXeJU1PK&kgs=0adc0b32cff2afd9&shndl=-1&shem=lbse,lsp&source=sh/x/kp/local/m1/3">
 											<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 15" fill="none">
 												<path fill-rule="evenodd" clip-rule="evenodd" d="M17.6293 3.27956C17.7117 2.80339 17.4427 2.34761 17.0096 2.17811C16.9477 2.15384 16.8824 2.13551 16.8144 2.12375L6.96087 0.419136C6.4166 0.325033 5.89918 0.689841 5.80497 1.23409C5.71085 1.77828 6.0757 2.29576 6.61988 2.38991L14.0947 3.68293L1.3658 12.6573C0.914426 12.9756 0.806485 13.5994 1.12473 14.0508C1.44298 14.5022 2.06688 14.6101 2.51825 14.2919L15.2471 5.31752L13.954 12.7923C13.8599 13.3365 14.2248 13.854 14.7689 13.9481C15.3132 14.0422 15.8306 13.6774 15.9248 13.1332L17.6293 3.27956Z" fill="currentcolor" />
 												<path fill-rule="evenodd" clip-rule="evenodd" d="M17.6293 3.27956C17.7117 2.80339 17.4427 2.34761 17.0096 2.17811C16.9477 2.15384 16.8824 2.13551 16.8144 2.12375L6.96087 0.419136C6.4166 0.325033 5.89918 0.689841 5.80497 1.23409C5.71085 1.77828 6.0757 2.29576 6.61988 2.38991L14.0947 3.68293L1.3658 12.6573C0.914426 12.9756 0.806485 13.5994 1.12473 14.0508C1.44298 14.5022 2.06688 14.6101 2.51825 14.2919L15.2471 5.31752L13.954 12.7923C13.8599 13.3365 14.2248 13.854 14.7689 13.9481C15.3132 14.0422 15.8306 13.6774 15.9248 13.1332L17.6293 3.27956Z" fill="currentcolor" />
@@ -717,10 +750,10 @@
 									<h4 class="fw-title">Governo</h4>
 									<div class="footer-link-list">
 										<ul class="list-wrap">
-											<li><a href="about.html">Prefeitura</a></li>
-											<li><a href="contact.html">Secretarias</a></li>
-											<li><a href="contact.html">Agência</a></li>
-											<li><a href="contact.html">Ver todos</a></li>
+											<li><a href="gabinete-prefeita.html">Prefeitura</a></li>
+											<li><a href="services-3.html">Secretarias</a></li>
+											<li><a href="services-3.html">Agência</a></li>
+											<li><a href="services-3.html">Ver todos</a></li>
 										
 										</ul>
 									</div>
@@ -732,10 +765,10 @@
 									<h4 class="fw-title">Serviços</h4>
 									<div class="footer-link-list">
 										<ul class="list-wrap">
-											<li><a href="about.html">Cidadão</a></li>
-											<li><a href="contact.html">Empresa</a></li>
-											<li><a href="contact.html">Servidor</a></li>
-											<li><a href="contact.html">Todos os serviços</a></li>
+											<li><a href="services-5.html">Cidadão</a></li>
+											<li><a href="services-5.html">Empresa</a></li>
+											<li><a href="services-5.html">Servidor</a></li>
+											<li><a href="services-5.html">Todos os serviços</a></li>
 										
 										</ul>
 									</div>
@@ -747,40 +780,26 @@
 									<h4 class="fw-title">Transparência</h4>
 									<div class="footer-link-list">
 										<ul class="list-wrap">
-											<li><a href="about.html">Acesso à Informação</a></li>
-											<li><a href="contact.html">COVID-19</a></li>
-											<li><a href="contact.html">Portal da transparência</a></li>
-											<li><a href="contact.html">Contas Públicas</a></li>
+											<li><a href="services.html">Acesso à Informação</a></li>
+											<li><a href="legislacao-portal.html">Legislação</a></li>
+											<li><a href="services.html">Portal da transparência</a></li>
+											<li><a href="modulo-financeiro.html">Contas Públicas</a></li>
 										
 										</ul>
 									</div>
 								</div>
 							</div>
 
-							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-								<div class="footer-widget">
-									<h4 class="fw-title">Servidor</h4>
-									<div class="footer-link-list">
-										<ul class="list-wrap">
-											<li><a href="about.html">Canal do servidor</a></li>
-											<li><a href="contact.html">Intranet</a></li>
-											<li><a href="contact.html">Webmail</a></li>
-											<li><a href="contact.html">Portal do servidor</a></li>
-										
-										</ul>
-									</div>
-								</div>
-							</div>
+						
 
 							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
 								<div class="footer-widget">
 									<h4 class="fw-title">Atendimento</h4>
 									<div class="footer-link-list">
 										<ul class="list-wrap">
-											<li><a href="about.html">Ouvidoria Geral</a></li>
-											<li><a href="contact.html">Canais de Comunicação</a></li>
-											<li><a href="contact.html">Faça sua manifestação</a></li>
-											<li><a href="contact.html">Ouve</a></li>
+											<li><a href="ouvidoria-geral.html">Ouvidoria Geral</a></li>
+											<li><a href="contact.html">Fale Conosco</a></li>
+								
 										
 										</ul>
 									</div>
@@ -827,6 +846,222 @@
 		<script src="assets/js/wow.min.js"></script>
 		<script src="assets/js/aos.js"></script>
 		<script src="assets/js/main.js"></script>
+		<script>
+			(function () {
+				var searchForms = document.querySelectorAll(".legacy-search-disabled");
+
+				if (!searchForms.length) {
+					return;
+				}
+
+				var aliases = {
+					inicio: "index.html",
+					home: "index.html",
+					servicos: "services-5.html",
+					servico: "services-5.html",
+					"carta de servicos": "services-5.html",
+					"sites municipais": "services-3.html",
+					transparencia: "services.html",
+					"portal transparencia": "services.html",
+					noticias: "blog.html",
+					noticia: "blog.html",
+					contato: "contact.html",
+					ouvidoria: "ouvidoria-geral.html",
+					"ouvidoria geral": "ouvidoria-geral.html",
+					"fale conosco": "contact.html",
+					iptu: "iptu.html",
+					"nota fiscal": "nota-fiscal.html",
+					"vagas e oportunidades": "vagas-oportunidades.html",
+					empregos: "funsat-empregos.html",
+					"legislacao municipal": "legislacao-portal.html",
+					legislacao: "legislacao-portal.html",
+					"alvaras e certidoes": "emitir-certidoes-alvara.html",
+					"alvara e certidao": "emitir-certidoes-alvara.html",
+					"debitos economicos": "emissao-guias-extrato.html",
+				};
+
+				function normalizeText(text) {
+					return String(text || "")
+						.toLowerCase()
+						.normalize("NFD")
+						.replace(/[\u0300-\u036f]/g, "")
+						.trim();
+				}
+
+				function slugify(text) {
+					return normalizeText(text)
+						.replace(/[^a-z0-9]+/g, "-")
+						.replace(/^-+|-+$/g, "");
+				}
+
+				function pageExists(url) {
+					return fetch(url, { method: "HEAD", cache: "no-store" })
+						.then(function (response) {
+							return response.ok;
+						})
+						.catch(function () {
+							return false;
+						});
+				}
+
+				function openSearchResult(query) {
+					var normalizedQuery = normalizeText(query);
+					var candidates = [];
+					var aliasUrl = aliases[normalizedQuery];
+					var slug = slugify(query);
+
+					if (aliasUrl) {
+						candidates.push(aliasUrl);
+					}
+
+					if (slug) {
+						candidates.push(slug + ".html");
+					}
+
+					return candidates.reduce(function (promise, url) {
+						return promise.then(function (foundUrl) {
+							if (foundUrl) {
+								return foundUrl;
+							}
+
+							return pageExists(url).then(function (exists) {
+								return exists ? url : "";
+							});
+						});
+					}, Promise.resolve("")).then(function (foundUrl) {
+						if (foundUrl) {
+							window.location.href = foundUrl;
+							return;
+						}
+
+						alert('Não encontramos uma página para "' + query.trim() + '".');
+					});
+				}
+
+				searchForms.forEach(function (form) {
+					form.addEventListener("submit", function (event) {
+						var input = form.querySelector("input");
+						var query = input ? input.value.trim() : "";
+
+						event.preventDefault();
+
+						if (!query) {
+							alert("Digite o nome da página que deseja pesquisar.");
+							return;
+						}
+
+						openSearchResult(query);
+					});
+				});
+			})();
+		</script>
+		<script>
+			(function () {
+				const slider = document.getElementById("home-news-slider");
+				const wrapper = document.getElementById("home-news-wrapper");
+
+				if (!slider || !wrapper) {
+					return;
+				}
+
+				function escapeHtml(value) {
+					return String(value || "")
+						.replace(/&/g, "&amp;")
+						.replace(/</g, "&lt;")
+						.replace(/>/g, "&gt;")
+						.replace(/"/g, "&quot;")
+						.replace(/'/g, "&#39;");
+				}
+
+				function cleanText(value) {
+					const textarea = document.createElement("textarea");
+					textarea.innerHTML = String(value || "");
+
+					return textarea.value
+						.replace(/<[^>]*>/g, " ")
+						.replace(/\u00a0/g, " ")
+						.replace(/\s+/g, " ")
+						.trim();
+				}
+
+				function buildSlide(item) {
+					const title = escapeHtml(cleanText(item.titulo || "Noticia"));
+					const category = escapeHtml(cleanText(item.categoria || "Noticias"));
+					const summary = escapeHtml(cleanText(item.resumo_curto || item.resumo || ""));
+					const image = escapeHtml(item.imagem || "assets/img/blog/blog01.jpg");
+					const detailUrl = "blog-details.html?id=" + encodeURIComponent(item.id);
+
+					return `
+						<div class="swiper-slide">
+							<div class="project__item-three shine-animate-item">
+								<div class="project__content-three">
+									<span>${category}</span>
+									<h2 class="title"><a href="${detailUrl}">${title}</a></h2>
+									<p>${summary}</p>
+									<a href="${detailUrl}" class="btn btn-two">Ver Detalhes</a>
+								</div>
+								<div class="project__thumb-three shine-animate">
+									<img src="${image}" alt="${title}" />
+								</div>
+							</div>
+						</div>
+					`;
+				}
+
+				function buildFallbackSlide() {
+					return `
+						<div class="swiper-slide">
+							<div class="project__item-three shine-animate-item">
+								<div class="project__content-three">
+									<span>Noticias</span>
+									<h2 class="title"><a href="blog.html">Nenhuma noticia publicada no momento</a></h2>
+									<p>Assim que uma noticia for cadastrada e publicada no admin, ela aparecera automaticamente aqui.</p>
+									<a href="blog.html" class="btn btn-two">Ir para Noticias</a>
+								</div>
+								<div class="project__thumb-three shine-animate">
+									<img src="assets/img/project/noticias-1.png" alt="Noticias" />
+								</div>
+							</div>
+						</div>
+					`;
+				}
+
+				function initHomeNewsSwiper() {
+					if (slider.swiper && typeof slider.swiper.destroy === "function") {
+						slider.swiper.destroy(true, true);
+					}
+
+					if (typeof Swiper === "function") {
+						new Swiper(".project-active", {
+							spaceBetween: 0,
+							loop: wrapper.children.length > 1,
+							autoplay: wrapper.children.length > 1 ? { delay: 6000 } : false,
+							navigation: {
+								nextEl: ".project-button-next",
+								prevEl: ".project-button-prev",
+							},
+						});
+					}
+				}
+
+				fetch("noticias-data.php")
+					.then((response) => {
+						if (!response.ok) {
+							throw new Error("Falha ao carregar noticias");
+						}
+						return response.json();
+					})
+					.then((data) => {
+						const items = Array.isArray(data.items) ? data.items.slice(0, 5) : [];
+						wrapper.innerHTML = items.length ? items.map(buildSlide).join("") : buildFallbackSlide();
+						initHomeNewsSwiper();
+					})
+					.catch(() => {
+						wrapper.innerHTML = buildFallbackSlide();
+						initHomeNewsSwiper();
+					});
+			})();
+		</script>
 		<script>
 			const circles = document.querySelectorAll(".circle");
 			circles.forEach((circle) => {

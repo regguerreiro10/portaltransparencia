@@ -819,6 +819,12 @@ textarea {
   width: 100%;
   transition-delay: 0.5s;
 }
+.search-advanced__title {
+  margin: 0 0 18px;
+  font-size: 30px;
+  font-weight: 800;
+  color: #17324d;
+}
 .search__input {
   position: relative;
   height: 80px;
@@ -915,6 +921,12 @@ textarea {
   opacity: 0.55;
   visibility: visible;
   transition-delay: 0s;
+}
+.search-advanced__message {
+  display: none;
+  margin-top: 14px;
+  color: #b42318;
+  font-weight: 700;
 }
 
 .search-input-field ~ .search-focus-border {

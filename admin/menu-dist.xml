@@ -48,6 +48,18 @@
     <menuitem label='_t{Documents}'>
         <icon>far:file-alt fa-fw</icon>
         <menu>
+              <menuitem label='Gestao de documentos publicos'>
+                  <icon>fas:folder-open fa-fw</icon>
+                  <action>DocumentoPublicoList#method=onShow</action>
+              </menuitem>
+              <menuitem label='Cadastro de licitacoes'>
+                  <icon>fas:gavel fa-fw</icon>
+                  <action>LicitacaoList#method=onShow</action>
+              </menuitem>
+              <menuitem label='Galeria'>
+                  <icon>fas:images fa-fw</icon>
+                  <action>GaleriaList#method=onShow</action>
+              </menuitem>
               <menuitem label='_t{Send document}'>
                   <icon>fas:cloud-upload-alt fa-fw</icon>
                   <action>SystemDocumentUploadForm</action>

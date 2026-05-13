@@ -43,25 +43,37 @@ try {
     $requestedPeriod = $_GET['period'] ?? null;
     $period = (is_string($requestedPeriod) && preg_match('/^\d{4}-\d{2}$/', $requestedPeriod))
         ? $requestedPeriod
-        : ($periods[0] ?? date('Y-m'));
+        : '';
+
+    $where = [
+        'c.tipo_conta_id = :tipo_conta',
+    ];
+    $params = [
+        ':tipo_conta' => 2,
+    ];
+
+    if ($period !== '') {
+        $where[] = "DATE_FORMAT($baseDateExpr, '%Y-%m') = :period";
+        $params[':period'] = $period;
+    }
 
     $dataSql = "
         SELECT
-            COALESCE(cat.nome, 'Sem categoria') AS grupo,
-            SUM(COALESCE(c.valor, 0)) AS total
+            c.id,
+            COALESCE(NULLIF(TRIM(c.obs), ''), CONCAT('Conta #', c.id)) AS conta_nome,
+            COALESCE(cat.nome, 'Sem categoria') AS categoria,
+            COALESCE(p.nome, 'Sem fornecedor') AS fornecedor,
+            COALESCE(c.valor, 0) AS total,
+            c.dt_vencimento
         FROM conta c
         LEFT JOIN categoria cat ON cat.id = c.categoria_id
-        WHERE c.tipo_conta_id = :tipo_conta
-          AND DATE_FORMAT($baseDateExpr, '%Y-%m') = :period
-        GROUP BY COALESCE(cat.nome, 'Sem categoria')
-        ORDER BY total DESC, grupo ASC
+        LEFT JOIN pessoa p ON p.id = c.pessoa_id
+        WHERE " . implode(' AND ', $where) . "
+        ORDER BY total DESC, categoria ASC, conta_nome ASC
     ";
 
     $dataStmt = $pdo->prepare($dataSql);
-    $dataStmt->execute([
-        ':tipo_conta' => 2,
-        ':period' => $period,
-    ]);
+    $dataStmt->execute($params);
 
     $items = $dataStmt->fetchAll();
     $totalGeral = array_sum(array_map(static fn ($item) => (float) $item['total'], $items));
@@ -74,9 +86,20 @@ try {
     $formattedItems = array_map(
         static function (array $item) use ($maxValue) {
             $value = (float) $item['total'];
+            $vencimento = null;
+            if (!empty($item['dt_vencimento'])) {
+                $timestamp = strtotime((string) $item['dt_vencimento']);
+                if ($timestamp !== false) {
+                    $vencimento = date('d/m/Y', $timestamp);
+                }
+            }
 
             return [
-                'label' => $item['grupo'],
+                'id' => (int) $item['id'],
+                'label' => $item['conta_nome'],
+                'category' => $item['categoria'],
+                'supplier' => $item['fornecedor'],
+                'due_date' => $vencimento,
                 'value' => $value,
                 'percentage' => $maxValue > 0 ? round(($value / $maxValue) * 100, 2) : 0,
             ];

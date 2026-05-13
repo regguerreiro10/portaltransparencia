@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="ie=edge" />
-		<title>Servicos</title>
+		<title>Serviços</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
@@ -132,6 +132,16 @@
 				line-height: 1.45;
 				color: #8a95a5;
 			}
+			.services-user-empty {
+				display: none;
+				margin-top: 16px;
+				padding: 16px 18px;
+				border-radius: 10px;
+				background: #fff6d8;
+				color: #8a6d1d;
+				font-size: 15px;
+				font-weight: 600;
+			}
 			.services-user-list a i {
 				margin-top: 4px;
 				font-size: 10px;
@@ -197,8 +207,9 @@
 											<li><a href="index.html">Inicio</a></li>
 											<li><a href="services-3.html">Sites Municipais</a></li>
 											<li><a href="services.html">Portal Transparencia</a></li>
-											<li><a href="services-5.html">Servicos</a></li>
-											<li><a href="blog.html">Noticias</a></li>
+											<li><a href="services-5.html">Serviços</a></li>
+											<li><a href="galeria.html">Galeria</a></li>
+											<li><a href="blog.html">Notícias</a></li>
 											<li><a href="contact.html">Fale Conosco</a></li>
 										</ul>
 									</div>
@@ -231,14 +242,17 @@
 					</div>
 				</div>
 			</div>
-		</header>
+			<!-- header-search -->
+			
+			
+			<!-- header-search-end -->		</header>
 
 		<main class="fix">
 			<section class="services-user-hero">
 				<div class="container">
-					<p>A Carta de Servicos ao Usuario e um instrumento de gestao publica, que contem informacoes sobre os servicos publicos prestados de forma direta ou indireta pelos orgaos e entidades do Poder Executivo Municipal, contemplando as formas de acesso, padroes de qualidade e compromissos de atendimento aos usuarios.</p>
-					<form class="services-user-search" action="#">
-						<input type="text" placeholder="BUSCA POR SERVICOS" />
+					<p>A Carta de Serviços ao Usuário é um instrumento de gestão pública que contém informações sobre os serviços públicos prestados, de forma direta ou indireta, pelos órgãos e entidades do Poder Executivo Municipal, contemplando as formas de acesso, padrões de qualidade e compromissos de atendimento aos usuários.</p>
+					<form class="services-user-search" action="services-5.html" method="get">
+						<input type="text" name="busca" placeholder="BUSCA POR SERVIÇOS" aria-label="Buscar por servicos" />
 						<button type="submit" aria-label="Buscar">
 							<i class="fas fa-search"></i>
 						</button>
@@ -293,23 +307,23 @@
 								<a href="abertura-inscricao-municipal-pessoa-fisica.html"><i class="fas fa-circle"></i>Abertura de Inscricao Municipal - Pessoa Fisica</a>
 								<a href="abertura-inscricao-municipal-pessoa-juridica.html"><i class="fas fa-circle"></i>Abertura de Inscricao Municipal Pessoa Juridica</a>
 								<a href="academia-ao-ar-livre.html"><i class="fas fa-circle"></i>Academia ao Ar Livre</a>
-								<a href="javascript:void(0)"><i class="fas fa-circle"></i>Acesso a Informacao dos Servicos Publicos - Regulacao</a>
-								<a href="javascript:void(0)"><i class="fas fa-circle"></i>Acessuas Trabalho</a>
-								<a href="javascript:void(0)"><i class="fas fa-circle"></i>Agendamento de Consultas de Processos Administrativos (Habite-se, Arrecadacao)</a>
-								<a href="javascript:void(0)"><i class="fas fa-circle"></i>Ajuda do Bem - Projeto do Fundo de Apoio a Comunidade - FAC</a>
-								<a href="javascript:void(0)"><i class="fas fa-circle"></i>Alienacao de Areas Publicas</a>
-								<a href="javascript:void(0)"><i class="fas fa-circle"></i>Alongamento</a>
-								<a href="javascript:void(0)"><i class="fas fa-circle"></i>Alteracao de endereco para correspondencia</a>
-								<a href="javascript:void(0)"><i class="fas fa-circle"></i>Alteracoes de Dados Cadastrais - MEI</a>
-								<a href="javascript:void(0)"><i class="fas fa-circle"></i>Alteracoes de Dados Cadastrais - Pessoa Fisica</a>
-								<a href="javascript:void(0)"><i class="fas fa-circle"></i>Alteracoes de dados cadastrais - Pessoa Juridica</a>
-								<a href="javascript:void(0)"><i class="fas fa-circle"></i>Alvara de localizacao e funcionamento</a>
-								<a href="javascript:void(0)"><i class="fas fa-circle"></i>Analise e Elaboracao dos Editais de Licitacao</a>
-								<a href="javascript:void(0)"><i class="fas fa-circle"></i>Aplicativo Fala CG</a>
-								<a href="javascript:void(0)"><i class="fas fa-circle"></i>Apoio de Agentes de Transito</a>
-								<a href="javascript:void(0)"><i class="fas fa-circle"></i>Assessoria de Assistencia aos Orgaos Colegiados - AAOC</a>
-								<a href="javascript:void(0)"><i class="fas fa-circle"></i>Atendimento ao Consumidor - Procon Campo Grande</a>
+								<a href="acesso-informacao-servicos-publicos-regulacao.html"><i class="fas fa-circle"></i>Acesso a Informacao dos Servicos Publicos - Regulacao</a>
+								<a href="acessuas-trabalho.html"><i class="fas fa-circle"></i>Acessuas Trabalho</a>
+								<a href="agendamento-consultas-processos-administrativos.html"><i class="fas fa-circle"></i>Agendamento de Consultas de Processos Administrativos (Habite-se, Arrecadacao)</a>
+								<a href="ajuda-do-bem-fac.html"><i class="fas fa-circle"></i>Ajuda do Bem - Projeto do Fundo de Apoio a Comunidade - FAC</a>
+								<a href="alienacao-areas-publicas.html"><i class="fas fa-circle"></i>Alienacao de Areas Publicas</a>
+								<a href="alongamento.html"><i class="fas fa-circle"></i>Alongamento</a>
+								<a href="alteracao-endereco-correspondencia.html"><i class="fas fa-circle"></i>Alteracao de endereco para correspondencia</a>
+								<a href="alteracoes-dados-cadastrais-mei.html"><i class="fas fa-circle"></i>Alteracoes de Dados Cadastrais - MEI</a>
+								<a href="alteracoes-dados-cadastrais-pessoa-fisica.html"><i class="fas fa-circle"></i>Alteracoes de Dados Cadastrais - Pessoa Fisica</a>
+								<a href="alteracoes-dados-cadastrais-pessoa-juridica.html"><i class="fas fa-circle"></i>Alteracoes de dados cadastrais - Pessoa Juridica</a>
+								<a href="alvara-localizacao-funcionamento.html"><i class="fas fa-circle"></i>Alvara de localizacao e funcionamento</a>
+								<a href="analise-elaboracao-editais-licitacao.html"><i class="fas fa-circle"></i>Analise e Elaboracao dos Editais de Licitacao</a>
+								<a href="apoio-agentes-transito.html"><i class="fas fa-circle"></i>Apoio de Agentes de Transito</a>
+								<a href="assessoria-assistencia-orgaos-colegiados-aaoc.html"><i class="fas fa-circle"></i>Assessoria de Assistencia aos Orgaos Colegiados - AAOC</a>
+								
 							</div>
+							<div class="services-user-empty">Nenhum servico encontrado para essa busca.</div>
 
 							<div class="services-user-pagination">
 								<span>Pagina 1 de 15</span>
@@ -344,5 +358,128 @@
 		<script src="assets/js/wow.min.js"></script>
 		<script src="assets/js/aos.js"></script>
 		<script src="assets/js/main.js"></script>
+		<script>
+			(function () {
+				var searchForm = document.querySelector(".services-user-search");
+				var searchInput = searchForm ? searchForm.querySelector("input") : null;
+				var servicesList = document.querySelector(".services-user-list");
+				var serviceLinks = servicesList ? Array.prototype.slice.call(servicesList.querySelectorAll("a")) : [];
+				var emptyState = document.querySelector(".services-user-empty");
+				var pagination = document.querySelector(".services-user-pagination");
+
+				if (!searchForm || !searchInput || !servicesList || !serviceLinks.length) {
+					return;
+				}
+
+				function normalizeText(text) {
+					return text
+						.toLowerCase()
+						.normalize("NFD")
+						.replace(/[\u0300-\u036f]/g, "")
+						.trim();
+				}
+
+				function filterServices() {
+					var query = normalizeText(searchInput.value);
+					var visibleCount = 0;
+
+					serviceLinks.forEach(function (link) {
+						var matches = !query || normalizeText(link.textContent).indexOf(query) !== -1;
+						link.style.display = matches ? "" : "none";
+
+						if (matches) {
+							visibleCount += 1;
+						}
+					});
+
+					if (emptyState) {
+						emptyState.style.display = visibleCount ? "none" : "block";
+					}
+
+					if (pagination) {
+						pagination.style.display = query ? "none" : "";
+					}
+				}
+
+				function slugify(text) {
+					return normalizeText(text)
+						.replace(/[^a-z0-9]+/g, "-")
+						.replace(/^-+|-+$/g, "");
+				}
+
+				function pageExists(url) {
+					return fetch(url, { method: "HEAD", cache: "no-store" })
+						.then(function (response) {
+							return response.ok;
+						})
+						.catch(function () {
+							return false;
+						});
+				}
+
+				function findServiceLink(query) {
+					var normalizedQuery = normalizeText(query);
+					var exactMatch = serviceLinks.find(function (link) {
+						return normalizeText(link.textContent) === normalizedQuery;
+					});
+
+					if (exactMatch) {
+						return exactMatch.getAttribute("href");
+					}
+
+					var partialMatch = serviceLinks.find(function (link) {
+						return normalizeText(link.textContent).indexOf(normalizedQuery) !== -1;
+					});
+
+					return partialMatch ? partialMatch.getAttribute("href") : "";
+				}
+
+				function openSearchResult(query) {
+					var serviceUrl = findServiceLink(query);
+					var slugUrl = slugify(query) + ".html";
+					var candidates = serviceUrl ? [serviceUrl, slugUrl] : [slugUrl];
+
+					return candidates.reduce(function (promise, url) {
+						return promise.then(function (foundUrl) {
+							if (foundUrl || !url || url === "javascript:void(0)") {
+								return foundUrl;
+							}
+
+							return pageExists(url).then(function (exists) {
+								return exists ? url : "";
+							});
+						});
+					}, Promise.resolve("")).then(function (foundUrl) {
+						if (foundUrl) {
+							window.location.href = foundUrl;
+							return;
+						}
+
+						alert('Não encontramos uma página para "' + query.trim() + '".');
+						filterServices();
+					});
+				}
+
+				searchForm.addEventListener("submit", function (event) {
+					event.preventDefault();
+					var query = searchInput.value.trim();
+
+					if (!query) {
+						alert("Digite o nome da página que deseja pesquisar.");
+						return;
+					}
+
+					openSearchResult(query);
+				});
+
+				searchInput.addEventListener("input", filterServices);
+
+				var initialQuery = new URLSearchParams(window.location.search).get("busca");
+				if (initialQuery) {
+					searchInput.value = initialQuery;
+					openSearchResult(initialQuery);
+				}
+			})();
+		</script>
 	</body>
 </html>

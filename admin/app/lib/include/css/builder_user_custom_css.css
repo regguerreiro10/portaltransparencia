@@ -1,0 +1,73 @@
+#builder-layout  div:not(.beditorcss).pcr-swatches {
+    background: #3F51B5 !important;
+    margin-top: 11.25px !important;
+    margin-right: 0px !important;
+    margin-bottom: 0px !important;
+    margin-left: 0px !important;
+    padding-top: 0px !important;
+    padding-right: 0px !important;
+    padding-bottom: 0px !important;
+    padding-left: 0px !important;
+    box-shadow: none !important;
+    color: #03A9F4 !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    text-decoration-line: none !important;
+    text-align: left !important;
+    border-top-style: none !important;
+    border-right-style: none !important;
+    border-bottom-style: none !important;
+    border-left-style: none !important;
+    border-color: #E91E63 !important;
+    border-top-width: 0px !important;
+    border-right-width: 0px !important;
+    border-bottom-width: 0px !important;
+    border-left-width: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-bottom-left-radius: 0px !important;
+}
+
+#builder-layout  i:not(.beditorcss).fas.fa-cog {
+    margin-right: 5px !important;
+}
+#builder-layout  i:not(.beditorcss).fas.fa-cog:hover {
+    background: #000000 !important;
+    border-color: #2196F3 !important;
+}
+#builder-layout  button:not(.beditorcss).pcr-button {
+    background: #ffffff !important;
+    margin-top: 0px !important;
+    margin-right: 0px !important;
+    margin-bottom: 0px !important;
+    margin-left: 0px !important;
+    padding-top: 3.96915px !important;
+    padding-right: 3.96915px !important;
+    padding-bottom: 3.96915px !important;
+    padding-left: 3.96915px !important;
+    box-shadow: none !important;
+    color: rgb(0, 0, 0) !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    text-decoration-line: none !important;
+    text-align: center !important;
+    border-top-style: solid !important;
+    border-right-style: solid !important;
+    border-bottom-style: solid !important;
+    border-left-style: none !important;
+    border-color: #dfe4ede4 !important;
+    border-top-width: 1px !important;
+    border-right-width: 1px !important;
+    border-bottom-width: 1px !important;
+    border-left-width: 0px !important;
+    border-top-right-radius: 8px !important;
+    border-top-left-radius: 0px !important;
+    border-bottom-right-radius: 8px !important;
+    border-bottom-left-radius: 0px !important;
+}
+#builder-layout  button:not(.beditorcss).pcr-button:hover {
+    background: #2196F3 !important;
+}

@@ -31,6 +31,16 @@
 				align-items: start;
 			}
 
+			.receitas-main {
+				display: grid;
+				gap: 28px;
+				align-items: start;
+			}
+
+			.receitas-area--legacy-despesas {
+				display: none;
+			}
+
 			.receitas-panel,
 			.receitas-side-card {
 				background: #ffffff;
@@ -327,6 +337,9 @@
 											
 											</li>
 											<li>
+												<a href="galeria.html">Galeria</a>
+											</li>
+											<li>
 												<a href="blog.html">Notícias</a>
 											
 											</li>
@@ -342,22 +355,8 @@
 													</svg>
 												</a>
 											</li>
-											<li class="offCanvas-menu">
-												<a href="javascript:void(0)" class="menu-tigger">
-													<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18" fill="none">
-														<path d="M0 2C0 0.895431 0.895431 0 2 0C3.10457 0 4 0.895431 4 2C4 3.10457 3.10457 4 2 4C0.895431 4 0 3.10457 0 2Z" fill="currentcolor" />
-														<path d="M0 9C0 7.89543 0.895431 7 2 7C3.10457 7 4 7.89543 4 9C4 10.1046 3.10457 11 2 11C0.895431 11 0 10.1046 0 9Z" fill="currentcolor" />
-														<path d="M0 16C0 14.8954 0.895431 14 2 14C3.10457 14 4 14.8954 4 16C4 17.1046 3.10457 18 2 18C0.895431 18 0 17.1046 0 16Z" fill="currentcolor" />
-														<path d="M7 2C7 0.895431 7.89543 0 9 0C10.1046 0 11 0.895431 11 2C11 3.10457 10.1046 4 9 4C7.89543 4 7 3.10457 7 2Z" fill="currentcolor" />
-														<path d="M7 9C7 7.89543 7.89543 7 9 7C10.1046 7 11 7.89543 11 9C11 10.1046 10.1046 11 9 11C7.89543 11 7 10.1046 7 9Z" fill="currentcolor" />
-														<path d="M7 16C7 14.8954 7.89543 14 9 14C10.1046 14 11 14.8954 11 16C11 17.1046 10.1046 18 9 18C7.89543 18 7 17.1046 7 16Z" fill="currentcolor" />
-														<path d="M14 2C14 0.895431 14.8954 0 16 0C17.1046 0 18 0.895431 18 2C18 3.10457 17.1046 4 16 4C14.8954 4 14 3.10457 14 2Z" fill="currentcolor" />
-														<path d="M14 9C14 7.89543 14.8954 7 16 7C17.1046 7 18 7.89543 18 9C18 10.1046 17.1046 11 16 11C14.8954 11 14 10.1046 14 9Z" fill="currentcolor" />
-														<path d="M14 16C14 14.8954 14.8954 14 16 14C17.1046 14 18 14.8954 18 16C18 17.1046 17.1046 18 16 18C14.8954 18 14 17.1046 14 16Z" fill="currentcolor" />
-													</svg>
-												</a>
-											</li>
-											<li class="header-btn"><a href="contact.html" class="btn">let’s Talk</a></li>
+											
+											<li class="header-btn"><a href="contact.html" class="btn">Fale Conosco</a></li>
 										</ul>
 									</div>
 									<div class="mobile-nav-toggler">
@@ -433,7 +432,7 @@
 						<div class="col-12">
 							<div class="search__wrapper">
 								<div class="search__close">
-									<button type="button" class="search-close-btn">
+									<button type="button" class="search-close-btn" aria-label="Fechar pesquisa">
 										<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
 											<path d="M17 1L1 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 											<path d="M1 1L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -441,17 +440,19 @@
 									</button>
 								</div>
 								<div class="search__form">
-									<form action="#">
+									<form action="formulario.php" method="get">
+										<h2 class="search-advanced__title">Busca no portal</h2>
 										<div class="search__input">
-											<input class="search-input-field" type="text" placeholder="Type keywords here" />
+											<input class="search-input-field" type="text" name="q" placeholder="Digite o termo da consulta" />
 											<span class="search-focus-border"></span>
-											<button>
+											<button type="submit" aria-label="Pesquisar">
 												<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 													<path d="M9.55 18.1C14.272 18.1 18.1 14.272 18.1 9.55C18.1 4.82797 14.272 1 9.55 1C4.82797 1 1 4.82797 1 9.55C1 14.272 4.82797 18.1 9.55 18.1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 													<path d="M19.0002 19.0002L17.2002 17.2002" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
 												</svg>
 											</button>
 										</div>
+										<div class="search-advanced__message" aria-live="polite"></div>
 									</form>
 								</div>
 							</div>
@@ -537,21 +538,57 @@
 					</div>
 					<div class="services-item-wrap">
 						<div class="row justify-content-center">
+
 							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
 								<div class="services-item shine-animate-item">
 									<div class="services-thumb">
-										<a href="orcamento.html" class="shine-animate"><img src="assets/img/services/foto-1.png" alt="Apexa" /></a>
+										<a href="orcamento.html" class="shine-animate"><img src="assets/img/services/foto-11.png" alt="Apexa" /></a>
 									</div>
 									<div class="services-content">
 										<div class="icon">
 											<i class="flaticon-profit"></i>
 										</div>
-										<h4 class="title"><a href="orcamento.html">Orçamento</a></h4>
+										<h4 class="title"><a href="gestao-documentos.html">Gestão de Documentos</a></h4>
 										<p>planejamento e orçamento público</p>
-                                        <a href="orcamento.html" class="btn">Ver mais</a>
+                                        <a href="gestao-documentos.html" class="btn">Ver mais</a>
 									</div>
 								</div>
 							</div>
+
+
+
+							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+								<div class="services-item shine-animate-item">
+									<div class="services-thumb">
+										<a href="modulo-financeiro.html" class="shine-animate"><img src="assets/img/services/foto-1.png" alt="Apexa" /></a>
+									</div>
+									<div class="services-content">
+										<div class="icon">
+											<i class="flaticon-profit"></i>
+										</div>
+										<h4 class="title"><a href="modulo-financeiro.html">Módulo (Financeiro)</a></h4>
+										<p>planejamento e orçamento público</p>
+                                        <a href="modulo-financeiro.html" class="btn">Ver mais</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+								<div class="services-item shine-animate-item">
+									<div class="services-thumb">
+										<a href="modulo-financeiro.html" class="shine-animate"><img src="assets/img/services/foto-12.png" alt="Apexa" /></a>
+									</div>
+									<div class="services-content">
+										<div class="icon">
+											<i class="flaticon-profit"></i>
+										</div>
+										<h4 class="title"><a href="relatorios-modulo.html">Módulo Relatórios / Estatísticas</a></h4>
+										<p>planejamento e orçamento público</p>
+                                        <a href="relatorios-modulo.html" class="btn">Ver mais</a>
+									</div>
+								</div>
+							</div>
+
 							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
 								<div class="services-item shine-animate-item">
 									<div class="services-thumb">
@@ -561,42 +598,45 @@
 										<div class="icon">
 											<i class="flaticon-investment-1"></i>
 										</div>
-                                        <h4 class="title"><a href="licitacoes-portal.html">Licitações</a></h4>
+                                        <h4 class="title"><a href="licitacoes-consulta.html">Licitações</a></h4>
 										<p>divulgar e acompanhar os processos de licitação</p>
-                                        <a href="licitacoes-portal.html" class="btn">Ver mais</a>
+                                        <a href="licitacoes-consulta.html" class="btn">Ver mais</a>
 									</div>
 								</div>
 							</div>
+
 							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
 								<div class="services-item shine-animate-item">
 									<div class="services-thumb">
-										<a href="obras-portal.html" class="shine-animate"><img src="assets/img/services/foto-3.png" alt="Apexa" /></a>
+                                        <a href="processo-administrativo.html" class="shine-animate"><img src="assets/img/services/foto-13.png" alt="Apexa" /></a>
 									</div>
 									<div class="services-content">
 										<div class="icon">
-											<i class="flaticon-pie-chart"></i>
+											<i class="flaticon-investment-1"></i>
 										</div>
-										<h4 class="title"><a href="obras-portal.html">Obras</a></h4>
-										<p>divulgar e acompanhar obras públicas</p>
-										<a href="obras-portal.html" class="btn">Ver mais</a>
+                                        <h4 class="title"><a href="processo-administrativo.html">Processo Administrativo</a></h4>
+										<p>divulgar e acompanhar os processos administrativos</p>
+                                        <a href="processo-administrativo.html" class="btn">Ver mais</a>
 									</div>
 								</div>
 							</div>
+
 							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
 								<div class="services-item shine-animate-item">
 									<div class="services-thumb">
-                                        <a href="gestao-pessoas-portal.html" class="shine-animate"><img src="assets/img/services/foto-4.png" alt="Apexa" /></a>
+                                        <a href="legislacao-portal.html" class="shine-animate"><img src="assets/img/services/foto-8.png" alt="Apexa" /></a>
 									</div>
 									<div class="services-content">
 										<div class="icon">
-											<i class="flaticon-light-bulb"></i>
+											<i class="flaticon-budget"></i>
 										</div>
-                                        <h4 class="title"><a href="gestao-pessoas-portal.html">Gestão de pessoas</a></h4>
-										<p>disponibilizar informações sobre servidores</p>
-                                        <a href="gestao-pessoas-portal.html" class="btn">Ver mais</a>
+                                        <h4 class="title"><a href="legislacao-portal.html">Processo Legislativo</a></h4>
+										<p>garantindo transparencia à legislação vigente.</p>
+                                        <a href="legislacao-portal.html" class="btn">Ver mais</a>
 									</div>
 								</div>
 							</div>
+							
 							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
 								<div class="services-item shine-animate-item">
 									<div class="services-thumb">
@@ -612,6 +652,23 @@
 									</div>
 								</div>
 							</div>
+
+							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
+								<div class="services-item shine-animate-item">
+									<div class="services-thumb">
+                                        <a href="gestao-pessoas-portal.html" class="shine-animate"><img src="assets/img/services/foto-4.png" alt="Apexa" /></a>
+									</div>
+									<div class="services-content">
+										<div class="icon">
+											<i class="flaticon-light-bulb"></i>
+										</div>
+                                        <h4 class="title"><a href="gestao-pessoas-portal.html">Gestão de pessoas</a></h4>
+										<p>disponibilizar informações sobre servidores</p>
+                                        <a href="gestao-pessoas-portal.html" class="btn">Ver mais</a>
+									</div>
+								</div>
+							</div>
+							
 							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
 								<div class="services-item shine-animate-item">
 									<div class="services-thumb">
@@ -642,21 +699,23 @@
 									</div>
 								</div>
 							</div>
+							
 							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
 								<div class="services-item shine-animate-item">
 									<div class="services-thumb">
-                                        <a href="legislacao-portal.html" class="shine-animate"><img src="assets/img/services/foto-8.png" alt="Apexa" /></a>
+										<a href="obras-portal.html" class="shine-animate"><img src="assets/img/services/foto-3.png" alt="Apexa" /></a>
 									</div>
 									<div class="services-content">
 										<div class="icon">
-											<i class="flaticon-budget"></i>
+											<i class="flaticon-pie-chart"></i>
 										</div>
-                                        <h4 class="title"><a href="legislacao-portal.html">Legislação</a></h4>
-										<p>garantindo transparencia à legislação vigente.</p>
-                                        <a href="legislacao-portal.html" class="btn">Ver mais</a>
+										<h4 class="title"><a href="obras-portal.html">Obras</a></h4>
+										<p>divulgar e acompanhar obras públicas</p>
+										<a href="obras-portal.html" class="btn">Ver mais</a>
 									</div>
 								</div>
 							</div>
+
 							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-8">
 								<div class="services-item shine-animate-item">
 									<div class="services-thumb">
@@ -695,6 +754,7 @@
 			<section class="receitas-area">
 				<div class="container">
 					<div class="receitas-layout">
+						<div class="receitas-main">
 						<div class="receitas-panel">
 							<div class="receitas-panel__header">
 								<div>
@@ -712,6 +772,25 @@
 								<div class="receitas-footer">
 								Veja mais <a id="receitas-link" href="receitas-consulta.html" target="_blank" rel="noopener noreferrer">clicando aqui</a>
 							</div>
+						</div>
+						<div class="receitas-panel">
+							<div class="receitas-panel__header">
+								<div>
+									<h2>Despesas Empenhadas</h2>
+									<label class="receitas-period" for="despesas-period">
+										<span>PerÃ­odo:</span>
+										<select id="despesas-period"></select>
+									</label>
+								</div>
+								<div class="receitas-total">Total: <strong id="despesas-total">R$ 0,00</strong></div>
+							</div>
+							<div class="receitas-chart" id="despesas-chart">
+								<div class="receitas-loading">Carregando dados...</div>
+							</div>
+							<div class="receitas-footer">
+								Veja mais <a id="despesas-link" href="despesas-consulta.html">clicando aqui</a>
+							</div>
+						</div>
 						</div>
 						<div class="receitas-side">
 							<div class="receitas-side-card">
@@ -738,7 +817,7 @@
 					</div>
 				</div>
 			</section>
-			<section class="receitas-area" style="padding-top: 0;">
+			<section class="receitas-area receitas-area--legacy-despesas" style="padding-top: 0;">
 				<div class="container">
 					<div class="receitas-panel">
 						<div class="receitas-panel__header">
@@ -763,62 +842,62 @@
 			<section class="transparency-links-area">
 				<div class="container">
 					<div class="transparency-links-grid">
-						<a class="transparency-link-card" href="services-details.html">
-							<div class="transparency-link-card__thumb"><span>Dados da Despesa Diária</span></div>
-							<div class="transparency-link-card__meta">Em tempo real</div>
-							<div class="transparency-link-card__title">Despesa Diária</div>
+						<a class="transparency-link-card" href="receitas-consulta.html">
+							<div class="transparency-link-card__thumb"><span>Arrecadação Diária</span></div>
+							<div class="transparency-link-card__meta">Arrecadação Diária</div>
+							<div class="transparency-link-card__title">Arrecadação Diária</div>
 						</a>
-						<a class="transparency-link-card" href="services-details.html">
-							<div class="transparency-link-card__thumb"><span>Legislações sobre Diárias</span></div>
-							<div class="transparency-link-card__meta">Legislação/Tabela</div>
-							<div class="transparency-link-card__title">Legislações sobre Diárias</div>
+						<a class="transparency-link-card" href="composicao-receita.html">
+							<div class="transparency-link-card__thumb"><span>Composição de Receitas</span></div>
+							<div class="transparency-link-card__meta">Fontes de Receitas</div>
+							<div class="transparency-link-card__title">Composição de Receitas</div>
 						</a>
-						<a class="transparency-link-card" href="services-details.html">
-							<div class="transparency-link-card__thumb"><span>Diárias e Passagens</span></div>
-							<div class="transparency-link-card__meta">Consulta de Gastos</div>
-							<div class="transparency-link-card__title">Diárias e Passagens</div>
+						<a class="transparency-link-card" href="renuncias-fiscais.html">
+							<div class="transparency-link-card__thumb"><span>Renúncias Fiscais</span></div>
+							<div class="transparency-link-card__meta">Renúncias Fiscais</div>
+							<div class="transparency-link-card__title">Renúncias Fiscais</div>
 						</a>
-						<a class="transparency-link-card" href="services-details.html">
+						<a class="transparency-link-card" href="nota-fiscal.html">
 							<div class="transparency-link-card__thumb"><span>Notas Fiscais Eletrônicas de Compras</span></div>
 							<div class="transparency-link-card__meta">NFe</div>
 							<div class="transparency-link-card__title">Notas Fiscais Eletrônicas de Compras</div>
 						</a>
-						<a class="transparency-link-card" href="services-details.html">
+						<a class="transparency-link-card" href="e-sic-informacoes-cidadao.html">
 							<div class="transparency-link-card__thumb"><span>E-SIC Informação ao Cidadão</span></div>
 							<div class="transparency-link-card__meta">Serviço de Informações ao Cidadão</div>
 							<div class="transparency-link-card__title">E-SIC Informações ao Cidadão</div>
 						</a>
-						<a class="transparency-link-card" href="services-details.html">
+						<a class="transparency-link-card" href="cmri.html">
 							<div class="transparency-link-card__thumb"><span>CMRI</span></div>
 							<div class="transparency-link-card__meta">Reavaliação de Informações</div>
 							<div class="transparency-link-card__title">CMRI</div>
 						</a>
-						<a class="transparency-link-card" href="services-details.html">
+						<a class="transparency-link-card" href="ouvidoria-sus.html">
 							<div class="transparency-link-card__thumb"><span>E-OUV Ouvidoria</span></div>
 							<div class="transparency-link-card__meta">Sistema de Ouvidorias</div>
 							<div class="transparency-link-card__title">E-OUV</div>
 						</a>
-						<a class="transparency-link-card" href="services-details.html">
+						<a class="transparency-link-card" href="codigo-etica.html">
 							<div class="transparency-link-card__thumb"><span>Código de Ética</span></div>
 							<div class="transparency-link-card__meta">Download</div>
 							<div class="transparency-link-card__title">Código de Ética</div>
 						</a>
-						<a class="transparency-link-card" href="services-details.html">
+						<a class="transparency-link-card" href="mrosc-portal.html">
 							<div class="transparency-link-card__thumb"><span>MROSC</span></div>
 							<div class="transparency-link-card__meta">MROSC</div>
 							<div class="transparency-link-card__title">Portal da Transparência do Terceiro Setor</div>
 						</a>
-						<a class="transparency-link-card" href="services-details.html">
+						<a class="transparency-link-card" href="dados-abertos-portal.html">
 							<div class="transparency-link-card__thumb"><span>Dados Abertos</span></div>
 							<div class="transparency-link-card__meta">Dados Abertos</div>
 							<div class="transparency-link-card__title">Dados Abertos</div>
 						</a>
-						<a class="transparency-link-card" href="services-details.html">
+						<a class="transparency-link-card" href="services-5.html">
 							<div class="transparency-link-card__thumb"><span>Carta de Serviços ao Usuário</span></div>
 							<div class="transparency-link-card__meta">Carta de Serviços ao Usuário</div>
 							<div class="transparency-link-card__title">Carta de Serviços ao Usuário</div>
 						</a>
-						<a class="transparency-link-card" href="services-details.html">
+						<a class="transparency-link-card" href="transporte-coletivo-portal.html">
 							<div class="transparency-link-card__thumb"><span>Serviço de Transporte Público</span></div>
 							<div class="transparency-link-card__meta">Serviço de Transporte Público</div>
 							<div class="transparency-link-card__title">Serviço de Transporte Público</div>
@@ -830,20 +909,44 @@
 		<!-- main-area-end -->
 		<!-- footer-area -->
 		<footer>
-			<div class="footer__area-three">
-				<div class="footer__top-three">
+			<div class="footer-area">
+				<div class="footer-top">
 					<div class="container">
 						<div class="row">
+							<div class="col-xl-3 col-lg-4 col-md-6">
+								<div class="footer-widget">
+									<div class="fw-logo mb-25">
+										<a href="index.html"><img src="assets/img/logo/logo.png" alt="Apexa" /></a>
+									</div>
+									<div class="footer-content">
+										<p>Fortalecendo a confiança pública por meio da igualdade e da transparência.</p>
+										<div class="footer-social">
+											<ul class="list-wrap">
+												<li>
+													<a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
+												</li>
+												<li>
+													<a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+												</li>
+												<li>
+													<a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+												</li>
+
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
 							
 							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
 								<div class="footer-widget">
 									<h4 class="fw-title">Governo</h4>
 									<div class="footer-link-list">
 										<ul class="list-wrap">
-											<li><a href="about.html">Prefeitura</a></li>
-											<li><a href="contact.html">Secretarias</a></li>
-											<li><a href="contact.html">Agência</a></li>
-											<li><a href="contact.html">Ver todos</a></li>
+											<li><a href="gabinete-prefeita.html">Prefeitura</a></li>
+											<li><a href="services-3.html">Secretarias</a></li>
+											<li><a href="services-3.html">Agência</a></li>
+											<li><a href="services-3.html">Ver todos</a></li>
 										
 										</ul>
 									</div>
@@ -855,10 +958,10 @@
 									<h4 class="fw-title">Serviços</h4>
 									<div class="footer-link-list">
 										<ul class="list-wrap">
-											<li><a href="about.html">Cidadão</a></li>
-											<li><a href="contact.html">Empresa</a></li>
-											<li><a href="contact.html">Servidor</a></li>
-											<li><a href="contact.html">Todos os serviços</a></li>
+											<li><a href="services-5.html">Cidadão</a></li>
+											<li><a href="services-5.html">Empresa</a></li>
+											<li><a href="services-5.html">Servidor</a></li>
+											<li><a href="services-5.html">Todos os serviços</a></li>
 										
 										</ul>
 									</div>
@@ -870,40 +973,26 @@
 									<h4 class="fw-title">Transparência</h4>
 									<div class="footer-link-list">
 										<ul class="list-wrap">
-											<li><a href="about.html">Acesso à Informação</a></li>
-											<li><a href="contact.html">COVID-19</a></li>
-											<li><a href="contact.html">Portal da transparência</a></li>
-											<li><a href="contact.html">Contas Públicas</a></li>
+											<li><a href="services.html">Acesso à Informação</a></li>
+											<li><a href="legislacao-portal.html">Legislação</a></li>
+											<li><a href="services.html">Portal da transparência</a></li>
+											<li><a href="modulo-financeiro.html">Contas Públicas</a></li>
 										
 										</ul>
 									</div>
 								</div>
 							</div>
 
-							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
-								<div class="footer-widget">
-									<h4 class="fw-title">Servidor</h4>
-									<div class="footer-link-list">
-										<ul class="list-wrap">
-											<li><a href="about.html">Canal do servidor</a></li>
-											<li><a href="contact.html">Intranet</a></li>
-											<li><a href="contact.html">Webmail</a></li>
-											<li><a href="contact.html">Portal do servidor</a></li>
-										
-										</ul>
-									</div>
-								</div>
-							</div>
+						
 
 							<div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
 								<div class="footer-widget">
 									<h4 class="fw-title">Atendimento</h4>
 									<div class="footer-link-list">
 										<ul class="list-wrap">
-											<li><a href="about.html">Ouvidoria Geral</a></li>
-											<li><a href="contact.html">Canais de Comunicação</a></li>
-											<li><a href="contact.html">Faça sua manifestação</a></li>
-											<li><a href="contact.html">Ouve</a></li>
+											<li><a href="ouvidoria-geral.html">Ouvidoria Geral</a></li>
+											<li><a href="contact.html">Fale Conosco</a></li>
+								
 										
 										</ul>
 									</div>
@@ -913,21 +1002,23 @@
 						</div>
 					</div>
 				</div>
-				<div class="footer__bottom-three">
+				<div class="footer-bottom">
 					<div class="container">
 						<div class="row align-items-center">
-							<div class="col-md-6">
-								<div class="fw-logo">
-									<a href="index.html"><img src="assets/img/logo/logo.png" alt="Apexa" /></a>
-								</div>
-							</div>
-							<div class="col-md-6">
+							
+							<div class="col-lg-5">
 								<div class="copyright-text">
-									<p>Copyright © <a href="index.html">Apexa</a> | All Right Reserved</p>
+									<p>Copyright © <a href="index.html">Ti-Genesis</a> | Todos os direitos reservados</p>
+									<a href="contact.html">Suporte termos & Condições de privacidade.</a>
 								</div>
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="footer-shape">
+					<img src="assets/img/images/footer_shape01.png" alt="Apexa" data-aos="fade-right" data-aos-delay="400" />
+					<img src="assets/img/images/footer_shape02.png" alt="Apexa" data-aos="fade-left" data-aos-delay="400" />
+					<img src="assets/img/images/footer_shape03.png" alt="Apexa" data-parallax='{"x" : 100 , "y" : -100 }' />
 				</div>
 			</div>
 		</footer>
@@ -1135,5 +1226,6 @@
 		</script>
 	</body>
 </html>
+
 
 

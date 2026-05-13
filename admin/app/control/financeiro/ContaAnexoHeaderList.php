@@ -213,7 +213,13 @@ class ContaAnexoHeaderList extends TPage
         $panel->add($this->datagrid_form);
 
         $button_cadastrar = new TButton('button_button_cadastrar');
-        $button_cadastrar->setAction(new TAction(['ContaAnexoForm', 'onShow']), "Cadastrar");
+        $action_button_cadastrar = new TAction(['ContaAnexoForm', 'onShow']);
+        $action_button_cadastrar->setParameter('conta_id', TSession::getValue(__CLASS__.'load_filter_conta_id'));
+        if(!empty($param['target_container']))
+        {
+            $action_button_cadastrar->setParameter('target_container', $param['target_container']);
+        }
+        $button_cadastrar->setAction($action_button_cadastrar, "Cadastrar");
         $button_cadastrar->addStyleClass('');
         $button_cadastrar->setImage('fas:plus #69aa46');
 
@@ -450,4 +456,3 @@ class ContaAnexoHeaderList extends TPage
     }
 
 }
-

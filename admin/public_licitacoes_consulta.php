@@ -4,76 +4,31 @@ header('Content-Type: application/json; charset=utf-8');
 header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
 
 try {
-    $items = [
-        [
-            'period' => '2026-03',
-            'status' => 'Em andamento',
-            'keyword' => 'manutencao predial',
-            'notice_number' => 'PE-014/2026',
-            'origin_process' => 'PROC-1201/2026',
-            'manager' => 'Secretaria Municipal de Administracao',
-            'modality' => 'Pregao Eletronico',
-            'supplier_document' => '12.345.678/0001-90',
-            'supplier_name' => 'Construtora Horizonte Ltda',
-            'estimated_value' => 185400.50,
-        ],
-        [
-            'period' => '2026-02',
-            'status' => 'Homologada',
-            'keyword' => 'locacao de veiculos',
-            'notice_number' => 'PE-009/2026',
-            'origin_process' => 'PROC-1008/2026',
-            'manager' => 'Secretaria Municipal de Saude',
-            'modality' => 'Pregao Eletronico',
-            'supplier_document' => '98.765.432/0001-10',
-            'supplier_name' => 'Mobiliza Frotas SA',
-            'estimated_value' => 92000.00,
-        ],
-        [
-            'period' => '2026-01',
-            'status' => 'Revogada',
-            'keyword' => 'material escolar',
-            'notice_number' => 'CC-003/2026',
-            'origin_process' => 'PROC-0770/2026',
-            'manager' => 'Secretaria Municipal de Educacao',
-            'modality' => 'Carta Convite',
-            'supplier_document' => '44.222.111/0001-56',
-            'supplier_name' => 'Papelaria Central ME',
-            'estimated_value' => 38450.90,
-        ],
-        [
-            'period' => '2025-12',
-            'status' => 'Em andamento',
-            'keyword' => 'software de gestao',
-            'notice_number' => 'TP-021/2025',
-            'origin_process' => 'PROC-4520/2025',
-            'manager' => 'Secretaria Municipal de Financas',
-            'modality' => 'Tomada de Precos',
-            'supplier_document' => '65.432.109/0001-44',
-            'supplier_name' => 'Inova Sistemas Publicos',
-            'estimated_value' => 210000.00,
-        ],
-    ];
+    require_once __DIR__ . '/app/model/LicitacaoSchemaHelper.php';
 
-    $periods = [];
-    $statuses = [];
-    $managers = [];
-    $modalities = [];
+    $config = require __DIR__ . '/app/config/minierp.php';
 
-    foreach ($items as $item) {
-        $periods[$item['period']] = [
-            'value' => $item['period'],
-            'label' => substr($item['period'], 5, 2) . '/' . substr($item['period'], 0, 4),
-        ];
-        $statuses[$item['status']] = $item['status'];
-        $managers[$item['manager']] = $item['manager'];
-        $modalities[$item['modality']] = $item['modality'];
+    if (($config['type'] ?? '') !== 'mysql') {
+        throw new RuntimeException('Tipo de banco nao suportado para este endpoint.');
     }
 
-    krsort($periods);
-    sort($statuses);
-    sort($managers);
-    sort($modalities);
+    $dsn = sprintf(
+        'mysql:host=%s;dbname=%s;charset=utf8mb4',
+        $config['host'] ?? 'localhost',
+        $config['name'] ?? ''
+    );
+
+    $pdo = new PDO(
+        $dsn,
+        $config['user'] ?? '',
+        $config['pass'] ?? '',
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ]
+    );
+
+    LicitacaoSchemaHelper::ensureSchemaWithPdo($pdo);
 
     $filters = [
         'period' => is_scalar($_GET['period'] ?? null) ? trim((string) $_GET['period']) : '',
@@ -84,57 +39,164 @@ try {
         'manager' => is_scalar($_GET['manager'] ?? null) ? trim((string) $_GET['manager']) : '',
         'modality' => is_scalar($_GET['modality'] ?? null) ? trim((string) $_GET['modality']) : '',
         'supplier_document' => is_scalar($_GET['supplier_document'] ?? null) ? trim((string) $_GET['supplier_document']) : '',
-        'periods' => array_values($periods),
-        'statuses' => array_values($statuses),
-        'managers' => array_values($managers),
-        'modalities' => array_values($modalities),
     ];
 
-    $filteredItems = array_values(array_filter($items, static function (array $item) use ($filters) {
-        if ($filters['period'] !== '' && $item['period'] !== $filters['period']) {
-            return false;
-        }
+    $where = ['1 = 1'];
+    $params = [];
 
-        if ($filters['status'] !== '' && $item['status'] !== $filters['status']) {
-            return false;
-        }
+    if ($filters['period'] !== '') {
+        $where[] = "DATE_FORMAT(l.data_licitacao, '%Y-%m') = :period";
+        $params[':period'] = $filters['period'];
+    }
+    if ($filters['status'] !== '') {
+        $where[] = 'l.status = :status';
+        $params[':status'] = $filters['status'];
+    }
+    if ($filters['keyword'] !== '') {
+        $where[] = '(l.objeto LIKE :keyword OR l.numero_edital LIKE :keyword OR l.processo_origem LIKE :keyword OR l.fornecedor_nome LIKE :keyword)';
+        $params[':keyword'] = '%' . $filters['keyword'] . '%';
+    }
+    if ($filters['notice_number'] !== '') {
+        $where[] = 'l.numero_edital LIKE :notice_number';
+        $params[':notice_number'] = '%' . $filters['notice_number'] . '%';
+    }
+    if ($filters['origin_process'] !== '') {
+        $where[] = 'l.processo_origem LIKE :origin_process';
+        $params[':origin_process'] = '%' . $filters['origin_process'] . '%';
+    }
+    if ($filters['manager'] !== '') {
+        $where[] = 'l.gestor = :manager';
+        $params[':manager'] = $filters['manager'];
+    }
+    if ($filters['modality'] !== '') {
+        $where[] = 'l.modalidade = :modality';
+        $params[':modality'] = $filters['modality'];
+    }
+    if ($filters['supplier_document'] !== '') {
+        $where[] = 'l.fornecedor_documento LIKE :supplier_document';
+        $params[':supplier_document'] = '%' . $filters['supplier_document'] . '%';
+    }
 
-        if ($filters['keyword'] !== '' && stripos($item['keyword'], $filters['keyword']) === false) {
-            return false;
-        }
+    $sql = "
+        SELECT
+            l.id,
+            l.numero_edital,
+            l.processo_origem,
+            l.objeto,
+            l.status,
+            l.modalidade,
+            l.gestor,
+            l.fornecedor_nome,
+            l.fornecedor_documento,
+            l.valor_estimado,
+            l.data_licitacao,
+            l.downloads
+        FROM licitacao l
+        WHERE " . implode(' AND ', $where) . "
+        ORDER BY l.data_licitacao DESC, l.id DESC
+    ";
 
-        if ($filters['notice_number'] !== '' && stripos($item['notice_number'], $filters['notice_number']) === false) {
-            return false;
-        }
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute($params);
+    $rows = $stmt->fetchAll();
 
-        if ($filters['origin_process'] !== '' && stripos($item['origin_process'], $filters['origin_process']) === false) {
-            return false;
-        }
+    $attachmentStmt = $pdo->prepare("
+        SELECT id, nome
+        FROM licitacao_anexo
+        WHERE licitacao_id = :licitacao_id
+        ORDER BY ordem ASC, id ASC
+    ");
 
-        if ($filters['manager'] !== '' && $item['manager'] !== $filters['manager']) {
-            return false;
-        }
+    foreach ($rows as &$row) {
+        $attachmentStmt->execute([':licitacao_id' => $row['id']]);
+        $attachments = $attachmentStmt->fetchAll();
+        $row['attachments'] = array_map(static function (array $attachment) {
+            return [
+                'id' => (int) $attachment['id'],
+                'name' => $attachment['nome'],
+                'download_url' => 'admin/public_licitacao_download.php?id=' . (int) $attachment['id'],
+            ];
+        }, $attachments);
+    }
+    unset($row);
 
-        if ($filters['modality'] !== '' && $item['modality'] !== $filters['modality']) {
-            return false;
-        }
+    $periodsRaw = $pdo->query("
+        SELECT DISTINCT DATE_FORMAT(data_licitacao, '%Y-%m') AS periodo
+        FROM licitacao
+        WHERE status IS NOT NULL AND status <> ''
+        ORDER BY periodo DESC
+    ")->fetchAll(PDO::FETCH_COLUMN);
 
-        if ($filters['supplier_document'] !== '' && stripos($item['supplier_document'], $filters['supplier_document']) === false) {
-            return false;
-        }
+    $managers = $pdo->query("
+        SELECT DISTINCT gestor
+        FROM licitacao
+        WHERE gestor IS NOT NULL AND gestor <> ''
+        ORDER BY gestor ASC
+    ")->fetchAll(PDO::FETCH_COLUMN);
 
-        return true;
-    }));
+    $modalities = $pdo->query("
+        SELECT DISTINCT modalidade
+        FROM licitacao
+        WHERE modalidade IS NOT NULL AND modalidade <> ''
+        ORDER BY modalidade ASC
+    ")->fetchAll(PDO::FETCH_COLUMN);
 
-    $totalValue = array_sum(array_map(static fn (array $item) => (float) $item['estimated_value'], $filteredItems));
+    $statusesRaw = $pdo->query("
+        SELECT DISTINCT status
+        FROM licitacao
+        WHERE status IS NOT NULL AND status <> ''
+        ORDER BY status ASC
+    ")->fetchAll(PDO::FETCH_COLUMN);
+
+    $periods = array_map(static function ($period) {
+        return [
+            'value' => $period,
+            'label' => substr((string) $period, 5, 2) . '/' . substr((string) $period, 0, 4),
+        ];
+    }, array_values(array_filter($periodsRaw)));
+
+    $statuses = array_map(static function ($status) {
+        return ['value' => $status, 'label' => $status];
+    }, array_values(array_filter($statusesRaw)));
+
+    $totalValue = array_sum(array_map(static fn (array $row) => (float) $row['valor_estimado'], $rows));
 
     echo json_encode([
-        'filters' => $filters,
+        'filters' => [
+            'period' => $filters['period'],
+            'status' => $filters['status'],
+            'keyword' => $filters['keyword'],
+            'notice_number' => $filters['notice_number'],
+            'origin_process' => $filters['origin_process'],
+            'manager' => $filters['manager'],
+            'modality' => $filters['modality'],
+            'supplier_document' => $filters['supplier_document'],
+            'periods' => $periods,
+            'statuses' => $statuses,
+            'managers' => array_values(array_filter($managers)),
+            'modalities' => array_values(array_filter($modalities)),
+        ],
         'summary' => [
-            'records' => count($filteredItems),
+            'records' => count($rows),
             'total_value' => round($totalValue, 2),
         ],
-        'rows' => $filteredItems,
+        'rows' => array_map(static function (array $row) {
+            return [
+                'id' => (int) $row['id'],
+                'notice_number' => $row['numero_edital'],
+                'origin_process' => $row['processo_origem'],
+                'object' => $row['objeto'],
+                'status' => $row['status'],
+                'modality' => $row['modalidade'],
+                'manager' => $row['gestor'],
+                'supplier_name' => $row['fornecedor_nome'] ?: 'Nao informado',
+                'supplier_document' => $row['fornecedor_documento'] ?: 'Nao informado',
+                'estimated_value' => (float) $row['valor_estimado'],
+                'date' => $row['data_licitacao'],
+                'downloads' => (int) $row['downloads'],
+                'attachments' => $row['attachments'],
+            ];
+        }, $rows),
     ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 } catch (Throwable $e) {
     http_response_code(500);
